@@ -1,2 +1,151 @@
 <h1>StaticPages#home</h1>
+
 <p>Find me in app/views/static_pages/home.html.erb</p>
+
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {packages:['wordtree']});
+      google.charts.setOnLoadCallback(drawChart);
+
+			var proverbs16 = '<%= @proverbs16 %>';
+			proverbs16 = proverbs16.split(";, &");
+			// console.log("proverbs16: " + proverbs16);
+			for(var i = 0; i < proverbs16.length; i++){
+				proverbs16[i] = proverbs16[i].replace("quot;","");
+				proverbs16[i] = proverbs16[i].replace("&quot","");
+				proverbs16[i] = proverbs16[i].replace("&#39;","'");
+				if(i == 32){
+					proverbs16[i] = proverbs16[i].replace(";]","");
+				}
+				if(i == 0){
+					proverbs16[i] = proverbs16[i].replace("[&","");
+				}
+				// console.log("proverbs16["+i+"]: " + proverbs16[i]);
+			}
+			var phrases = [];
+			var headers = ['Phrases'];
+			phrases[0] = headers;
+		
+			var result = phrases.concat(proverbs16);
+			console.log("proverbs16[0] finalized: " + proverbs16[0]);
+			console.log("result[0]: " + result[0]);
+			console.log("result[1]: " + result[1]);
+			console.log("result[2]: " + result[2]);
+			result[0] = result[0].toString();
+
+			var que = [];
+			que[0] = result;
+
+			/* for(var i=0; i < result.length; i++){
+				console.log("typeof(result["+i+"]: " + typeof(result));
+			}	
+			
+			console.log("typeof(que[0]): " + typeof(que[0]));
+			console.log("typeof(que[0][0]): " + typeof(que[0][0]));
+			console.log("typeof(que[0][1]): " + typeof(que[0][1]));
+			console.log("typeof(que[0][2]): " + typeof(que[0][2]));
+			console.log("typeof(que[0][3]): " + typeof(que[0][3]));
+			*/
+			console.log("que.length: " + que.length);
+			console.log("que[0].length: " + que[0].length);
+			console.log("que[0][2]: " + que[0][2]);
+
+
+
+
+			var verses = [
+['To man belong the plans of the heart, but from the LORD comes the reply of the tongue.'],
+['All a man&#8217;s ways seem innocent to him, but motives are weighed by the LORD.'],
+['Commit to the LORD whatever you do, and your plans will succeed.'],
+['The LORD works out everything for his own ends -- even the wicked for a day of disaster.'],
+['The LORD detests all the proud of heart. Be sure of this: They will not go unpunished.'],
+['Through love and faithfulness sin is atoned for; through the fear of the LORD a man avoids evil.'],
+['When a man&#8217;s ways are pleasing to the LORD, he makes even his enemies be at peace with him.'],
+['Better a little with righteousness than much gain with injustice.'],
+['In his heart a man plans his course, but the LORD determines his steps.'],
+['The lips of a king speak as an oracle, and his mouth should not betray justice.'],
+['Honest scales and balances are from the LORD; all the weights in the bag are of his making.'],
+['Kings detest wrongdoing, for a throne is established through righteousness.'],
+['Kings take pleasure in honest lips; they value a man who speaks the truth.'],
+['A king&#8217;s wrath is a messenger of death, but a wise man will appease it.'],
+['When a king&#8217;s face brightens, it means life; his favor is like a rain cloud of spring.'],
+['How much better to get wisdom than gold, to choose understanding rather than silver!'],
+['The highway of the upright avoids evil; he who guards his way guards his life.'],
+['Pride goes before destruction, a haughty spirit before a fall.'],
+['Better to be lowly in the spirit and among the oppressed than to share plunder with the proud.'],
+['Whoever gives heed to instruction prospers, and blessed is he who trusts in the LORD.'],
+['The wise in heart are called discerning, and pleasant words promote instruction.'],
+['Understanding is a fountain of life to those who have it, but folly brings punishment to fools.'],
+['A wise man&#8217;s heart guides his mouth, and his lips promote instruction.'],
+['Pleasant words are a honeycomb, sweet to the soul and healing to the bones.'],
+['There is a way that seems right to a man, but in the end it leads to death.'],
+['A scoundrel plots evil, and his speech is like a scorching fire.'],
+['A perverse man stirs up dissension, and a gossip separates close friends.'],
+['A violent man entices his neighbor and leads him down a path that is not good.'],
+['He who winks with his eye is plotting perversity; he who purses his lips is bent on evil.'],
+['Gray hair is a crown of splendor; it is attained by a righteous life.'],
+['Better a patient man than a warrior, a man who controls his temper than one who takes a city.'],
+['The lot is cast into the lap, but its every decision is from the LORD.'],
+			];
+
+
+
+
+
+
+
+
+
+
+
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable(verses);
+        // var data = google.visualization.arrayToDataTable(proverbs16);
+          /*[ ['Phrases'],
+            ['cats are better than dogs'],
+            ['cats eat kibble'],
+            ['cats are better than hamsters'],
+            ['cats are awesome'],
+            ['cats are people too'],
+            ['cats eat mice'],
+            ['cats meowing'],
+            ['cats in the cradle'],
+            ['cats eat mice'],
+            ['cats in the cradle lyrics'],
+            ['cats eat kibble'],
+            ['cats for adoption'],
+            ['cats are family'],
+            ['cats eat mice'],
+            ['cats are better than kittens'],
+            ['cats are evil'],
+            ['cats are weird'],
+            ['cats eat mice'],
+          ]
+        );*/
+
+        var options = {
+          wordtree: {
+            format: 'implicit',
+            word: 'cats'
+          }
+        };
+
+        var chart = new google.visualization.WordTree(document.getElementById('wordtree_basic'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="wordtree_basic" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
+
+<!--% @proverbs16.each do |prov| %>
+	%= prov %><br>
+ end %-->
+
+
+
