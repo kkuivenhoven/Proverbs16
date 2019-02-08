@@ -8,6 +8,13 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+	<nav class="navbar navbar-default navbar-expand-sm">
+		Proverbs 16
+		&nbsp;&nbsp;&nbsp;<%= link_to 'Help', static_pages_help_path, method: :get %>
+		&nbsp;&nbsp;&nbsp;<%= link_to 'Home', root_path, method: :get %>
+	</nav>
+
+
   <body>
     <%= yield %>
   </body>

@@ -5,5 +5,10 @@ class StaticPagesController < ApplicationController
   end
 
   def help
+		@proverbs16 = Proverb.all.pluck(:verse_text)
+		if params[:commit]
+			@params = params[:proverb]
+		end
   end
+
 end
