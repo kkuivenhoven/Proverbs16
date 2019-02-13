@@ -18,4 +18,11 @@ class StaticPagesController < ApplicationController
 		end
   end
 
+  def proverbs21
+		@proverbs21 = Proverb.where("chapter = '19'").all.pluck(:verse_text)
+		if params[:commit]
+			@params = params[:proverb]
+		end
+  end
+
 end
