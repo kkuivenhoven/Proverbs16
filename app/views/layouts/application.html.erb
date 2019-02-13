@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Various chapters from Proverbs</title>
+    <title>Proverbs</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,11 +9,11 @@
   </head>
 
 	<nav class="navbar navbar-default navbar-expand-sm">
-		Proverbs 16
+		Various Chapters from Proverbs
+		&nbsp;&nbsp;&nbsp;<%= link_to 'Home', root_path, method: :get %>
 		&nbsp;&nbsp;&nbsp;<%= link_to 'Proverbs 16', static_pages_proverbs16_path, method: :get %>
 		&nbsp;&nbsp;&nbsp;<%= link_to 'Proverbs 19', static_pages_proverbs19_path, method: :get %>
 		&nbsp;&nbsp;&nbsp;<%= link_to 'Proverbs 21', static_pages_proverbs21_path, method: :get %>
-		&nbsp;&nbsp;&nbsp;<%= link_to 'Home', root_path, method: :get %>
 	</nav>
 
 
