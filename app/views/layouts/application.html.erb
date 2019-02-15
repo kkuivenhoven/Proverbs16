@@ -17,6 +17,14 @@
 		&nbsp;&nbsp;&nbsp;<%= link_to 'Proverbs 21', static_pages_proverbs21_path, method: :get %>
 	</nav>
 
+	<div class="center jumbotron jumbotron-fluid">
+		<div class="container">
+			&nbsp;<h2>Proverbs <span id="bar">|</span>
+			<%= yield(:title) %></h2>
+			<%= yield(:p) %></p>
+		</div>
+	</div>
+		
 
   <body>
     <%= yield %>
