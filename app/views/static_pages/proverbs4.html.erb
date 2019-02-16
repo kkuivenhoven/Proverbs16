@@ -1,0 +1,22 @@
+<% provide(:title, "4") %>
+
+<h4>Search for a word to be highlighted:</h4>
+<%= form_tag(static_pages_proverbs4_path, method: :get) do %>
+	<%= text_field_tag :proverb %>
+	<%= submit_tag 'Search' %>
+<% end %>
+<br><br>
+<p>
+	<% @proverbs4.each do |prov| %>
+		<% if !@params.nil? %>
+			<% if prov.include? @params %>
+				<%= prov.sub("#{@params}", "<b>#{@params}</b>").html_safe %><br>
+			<% else %> 
+				<%= prov %> <br>
+			<% end %> 
+		<% else %>
+			<%= prov %> <br>
+		<% end %> 
+	<% end %>
+</p>
+
