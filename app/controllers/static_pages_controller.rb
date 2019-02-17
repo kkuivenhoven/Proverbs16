@@ -17,6 +17,7 @@ class StaticPagesController < ApplicationController
 		if params[:commit]
 			@params = params[:proverb]
 		end
+		@common = CommonWord.where("chapter_num = '19'").all
   end
 
   def proverbs21
@@ -24,6 +25,7 @@ class StaticPagesController < ApplicationController
 		if params[:commit]
 			@params = params[:proverb]
 		end
+		@common = CommonWord.where("chapter_num = '21'").all
   end
 
   def proverbs7
@@ -31,6 +33,7 @@ class StaticPagesController < ApplicationController
 		if params[:commit]
 			@params = params[:proverb]
 		end
+		@common = CommonWord.where("chapter_num = '7'").all
   end
 
   def proverbs1
@@ -38,6 +41,7 @@ class StaticPagesController < ApplicationController
 		if params[:commit]
 			@params = params[:proverb]
 		end
+		@common = CommonWord.where("chapter_num = '1'").all
   end
 
   def proverbs4
@@ -45,6 +49,7 @@ class StaticPagesController < ApplicationController
 		if params[:commit]
 			@params = params[:proverb]
 		end
+		@common = CommonWord.where("chapter_num = '4'").all
   end
 
   def proverbs27
@@ -52,6 +57,7 @@ class StaticPagesController < ApplicationController
 		if params[:commit]
 			@params = params[:proverb]
 		end
+		@common = CommonWord.where("chapter_num = '27'").all
   end
 
   def proverbs20
@@ -59,6 +65,7 @@ class StaticPagesController < ApplicationController
 		if params[:commit]
 			@params = params[:proverb]
 		end
+		@common = CommonWord.where("chapter_num = '20'").all
   end
 
   def proverbs5
@@ -66,6 +73,7 @@ class StaticPagesController < ApplicationController
 		if params[:commit]
 			@params = params[:proverb]
 		end
+		@common = CommonWord.where("chapter_num = '5'").all
   end
 
 end
