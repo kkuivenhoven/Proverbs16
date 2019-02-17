@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'common/words'
+
   # get 'static_pages/help'
   get 'static_pages/proverbs1'
   get 'static_pages/proverbs4'

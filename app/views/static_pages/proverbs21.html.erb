@@ -6,17 +6,28 @@
 	<%= submit_tag 'Search' %>
 <% end %>
 <br><br>
-<p>
-	<% @proverbs21.each do |prov| %>
-		<% if !@params.nil? %>
-			<% if prov.include? @params %>
-				<%= prov.sub("#{@params}", "<b>#{@params}</b>").html_safe %><br>
-			<% else %> 
-				<%= prov %> <br>
-			<% end %> 
-		<% else %>
-			<%= prov %> <br>
-		<% end %> 
-	<% end %>
-</p>
+
+<div class="row">
+	
+	<div class="col-sm">
+		<p>
+			<% @proverbs21.each do |prov| %>
+				<% if !@params.nil? %>
+					<% if prov.include? @params %>
+						<%= prov.sub("#{@params}", "<b>#{@params}</b>").html_safe %><br>
+					<% else %> 
+						<%= prov %> <br>
+					<% end %> 
+				<% else %>
+					<%= prov %> <br>
+				<% end %> 
+			<% end %>
+		</p>
+	</div>
+	
+	<div class="col-sm">
+		<%= render partial: 'partials/html_mapping', locals: { chapter_num: @common } %><br><br>
+	</div>
+
+</div>
 

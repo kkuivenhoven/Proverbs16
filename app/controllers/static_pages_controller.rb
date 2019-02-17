@@ -9,6 +9,7 @@ class StaticPagesController < ApplicationController
 		if params[:commit]
 			@params = params[:proverb]
 		end
+		@common = CommonWord.where("chapter_num = '16'").all
   end
 
   def proverbs19
