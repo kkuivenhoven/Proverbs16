@@ -9,22 +9,7 @@
 
 <div class="row">
 	
-	<div class="col-sm">
-		<p>
-			<% @proverbs7.each do |prov| %>
-				<% if !@params.nil? %>
-					<% if prov.include? @params %>
-						<%= prov.sub("#{@params}", "<b>#{@params}</b>").html_safe %><br>
-					<% else %> 
-						<%= prov %> <br>
-					<% end %> 
-				<% else %>
-					<%= prov %> <br>
-				<% end %> 
-			<% end %>
-		</p>
-	</div>
-
+	<%= render partial: 'partials/index_partial', locals: { proverb: @proverbs7 } %>
 
 	<div class="col-sm">
 		<%= render partial: 'partials/html_mapping', locals: { chapter_num: @common } %><br><br>

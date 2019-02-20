@@ -1,0 +1,17 @@
+
+<div class="col-sm">
+	<p>
+		<% proverb.each do |prov| %>
+			<% if !@params.nil? %>
+				<% if prov.include? @params %>
+					<%= prov.sub("#{@params}", "<b>#{@params}</b>").html_safe %><br>
+				<% else %>
+					<%= prov %> <br>
+				<% end %>
+			<% else %>
+				<%= prov %> <br>
+			<% end %>
+		<% end %>
+	</p>
+</div>
+

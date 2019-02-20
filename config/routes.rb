@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'static_pages/proverbs5'
   get 'static_pages/proverbs7'
   get 'static_pages/proverbs16'
+  get 'static_pages/proverbs18'
   get 'static_pages/proverbs19'
   get 'static_pages/proverbs20'
   get 'static_pages/proverbs21'

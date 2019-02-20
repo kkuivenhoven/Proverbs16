@@ -76,4 +76,12 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '5'").all
   end
 
+  def proverbs18
+		@proverbs18 = Proverb.where("chapter = '18'").all.pluck(:verse_text)
+		if params[:commit]
+			@params = params[:proverb]
+		end
+		@common = CommonWord.where("chapter_num = '18'").all
+  end
+
 end
