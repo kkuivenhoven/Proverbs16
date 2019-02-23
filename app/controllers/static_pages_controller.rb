@@ -42,6 +42,7 @@ class StaticPagesController < ApplicationController
 			@params = params[:proverb]
 		end
 		@common = CommonWord.where("chapter_num = '1'").all
+		@stopWords = StopWord.all
   end
 
   def proverbs4

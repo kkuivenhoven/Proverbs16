@@ -20,7 +20,8 @@ Rails.application.routes.draw do
   get 'static_pages/proverbs21'
   get 'static_pages/proverbs27'
 
-	root controller: :static_pages, action: :home
+	# root controller: :static_pages, action: :home
+	root controller: :static_pages, action: :proverbs1
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

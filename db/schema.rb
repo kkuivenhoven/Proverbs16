@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190217015357) do
+ActiveRecord::Schema.define(version: 20190223021634) do
 
   create_table "common_words", force: :cascade do |t|
     t.integer  "chapter_num"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 20190217015357) do
     t.integer  "chapter"
     t.integer  "verse_num"
     t.string   "verse_text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stop_words", force: :cascade do |t|
+    t.text     "word"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

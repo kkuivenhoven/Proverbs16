@@ -21,4 +21,15 @@ namespace :save_word_count do
 		end
 	end
 
+	desc "TODO"
+	task stop_words: :environment do
+		stop_words = File.read(Rails.root.join('stopwords.csv'))
+		csv = CSV.parse(stop_words, :headers => true, :encoding => 'ISO-8859-1')
+		csv.each do |r|
+			stopWord = StopWord.new
+			stopWord.word = r['stopwords']
+			stopWord.save
+		end
+	end
+
 end
