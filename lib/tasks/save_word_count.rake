@@ -32,4 +32,29 @@ namespace :save_word_count do
 		end
 	end
 
+	desc "TODO"
+	task verse_num_sw: :environment do
+		@stopWords = StopWord.all.pluck(:word)
+		@common = CommonWord.all
+		@proverbs = Proverb.all
+		@common.each do |co|
+			@proverbs.each do |prov| 
+				if co.chapter_num == prov.chapter 
+					if co.verse_num == prov.verse_num
+							prov_wo = prov.verse_text.downcase.split.delete_if{|x| @stopWords.include?(x)}.join(' ')
+							a = prov_wo.split
+							h = a.group_by {|w| w}
+							b = h.map {|k,v| [k, v.size]}
+							c = b.sort_by(&:last)
+							d = c.reverse
+							d = d.to_h
+						
+							co.verse_num_sw = d
+							co.save
+					end
+				end
+			end
+		end
+	end
+
 end

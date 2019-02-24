@@ -10,6 +10,8 @@ class StaticPagesController < ApplicationController
 			@params = params[:proverb]
 		end
 		@common = CommonWord.where("chapter_num = '16'").all
+		@common_sw = CommonWord.where("chapter_num = '16'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
   end
 
   def proverbs19
@@ -18,6 +20,8 @@ class StaticPagesController < ApplicationController
 			@params = params[:proverb]
 		end
 		@common = CommonWord.where("chapter_num = '19'").all
+		@common_sw = CommonWord.where("chapter_num = '19'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
   end
 
   def proverbs21
@@ -26,6 +30,8 @@ class StaticPagesController < ApplicationController
 			@params = params[:proverb]
 		end
 		@common = CommonWord.where("chapter_num = '21'").all
+		@common_sw = CommonWord.where("chapter_num = '21'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
   end
 
   def proverbs7
@@ -34,6 +40,8 @@ class StaticPagesController < ApplicationController
 			@params = params[:proverb]
 		end
 		@common = CommonWord.where("chapter_num = '7'").all
+		@common_sw = CommonWord.where("chapter_num = '7'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
   end
 
   def proverbs1
@@ -42,7 +50,8 @@ class StaticPagesController < ApplicationController
 			@params = params[:proverb]
 		end
 		@common = CommonWord.where("chapter_num = '1'").all
-		@stopWords = StopWord.all
+		@common_sw = CommonWord.where("chapter_num = '1'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
   end
 
   def proverbs4
@@ -51,6 +60,8 @@ class StaticPagesController < ApplicationController
 			@params = params[:proverb]
 		end
 		@common = CommonWord.where("chapter_num = '4'").all
+		@common_sw = CommonWord.where("chapter_num = '4'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
   end
 
   def proverbs27
@@ -59,6 +70,8 @@ class StaticPagesController < ApplicationController
 			@params = params[:proverb]
 		end
 		@common = CommonWord.where("chapter_num = '27'").all
+		@common_sw = CommonWord.where("chapter_num = '27'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
   end
 
   def proverbs20
@@ -67,6 +80,8 @@ class StaticPagesController < ApplicationController
 			@params = params[:proverb]
 		end
 		@common = CommonWord.where("chapter_num = '20'").all
+		@common_sw = CommonWord.where("chapter_num = '20'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
   end
 
   def proverbs5
@@ -75,6 +90,8 @@ class StaticPagesController < ApplicationController
 			@params = params[:proverb]
 		end
 		@common = CommonWord.where("chapter_num = '5'").all
+		@common_sw = CommonWord.where("chapter_num = '5'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
   end
 
   def proverbs18
@@ -83,6 +100,8 @@ class StaticPagesController < ApplicationController
 			@params = params[:proverb]
 		end
 		@common = CommonWord.where("chapter_num = '18'").all
+		@common_sw = CommonWord.where("chapter_num = '18'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
   end
 
   def proverbs2
@@ -91,6 +110,8 @@ class StaticPagesController < ApplicationController
 			@params = params[:proverb]
 		end
 		@common = CommonWord.where("chapter_num = '2'").all
+		@common_sw = CommonWord.where("chapter_num = '2'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
   end
 
   def proverbs3
@@ -99,6 +120,8 @@ class StaticPagesController < ApplicationController
 			@params = params[:proverb]
 		end
 		@common = CommonWord.where("chapter_num = '3'").all
+		@common_sw = CommonWord.where("chapter_num = '3'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
   end
 
   def proverbs6
@@ -107,6 +130,8 @@ class StaticPagesController < ApplicationController
 			@params = params[:proverb]
 		end
 		@common = CommonWord.where("chapter_num = '6'").all
+		@common_sw = CommonWord.where("chapter_num = '6'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
   end
 
   def proverbs8
@@ -115,6 +140,8 @@ class StaticPagesController < ApplicationController
 			@params = params[:proverb]
 		end
 		@common = CommonWord.where("chapter_num = '8'").all
+		@common_sw = CommonWord.where("chapter_num = '8'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
   end
 
   def proverbs9
@@ -123,6 +150,8 @@ class StaticPagesController < ApplicationController
 			@params = params[:proverb]
 		end
 		@common = CommonWord.where("chapter_num = '9'").all
+		@common_sw = CommonWord.where("chapter_num = '9'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
   end
 
   def proverbs10
@@ -131,6 +160,8 @@ class StaticPagesController < ApplicationController
 			@params = params[:proverb]
 		end
 		@common = CommonWord.where("chapter_num = '10'").all
+		@common_sw = CommonWord.where("chapter_num = '10'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
   end
 
   def proverbs11
@@ -139,6 +170,69 @@ class StaticPagesController < ApplicationController
 			@params = params[:proverb]
 		end
 		@common = CommonWord.where("chapter_num = '11'").all
+		@common_sw = CommonWord.where("chapter_num = '11'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
+  end
+
+  def proverbs12
+		@proverbs12 = Proverb.where("chapter = '12'").all.pluck(:verse_text)
+		@prov12 = Proverb.where("chapter = '12'").all
+		if params[:commit]
+			@params = params[:proverb]
+		end
+		@common = CommonWord.where("chapter_num = '12'").all.pluck(:verse_num_sw)
+		@common_sw = CommonWord.where("chapter_num = '12'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
+  end
+
+  def proverbs13
+		@proverbs13 = Proverb.where("chapter = '13'").all.pluck(:verse_text)
+		if params[:commit]
+			@params = params[:proverb]
+		end
+		@common = CommonWord.where("chapter_num = '13'").all
+		@common_sw = CommonWord.where("chapter_num = '13'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
+  end
+
+  def proverbs14
+		@proverbs14 = Proverb.where("chapter = '14'").all.pluck(:verse_text)
+		if params[:commit]
+			@params = params[:proverb]
+		end
+		@common = CommonWord.where("chapter_num = '14'").all
+		@common_sw = CommonWord.where("chapter_num = '14'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
+  end
+
+  def proverbs15
+		@proverbs15 = Proverb.where("chapter = '15'").all.pluck(:verse_text)
+		if params[:commit]
+			@params = params[:proverb]
+		end
+		@common = CommonWord.where("chapter_num = '15'").all
+		@common_sw = CommonWord.where("chapter_num = '15'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
+  end
+
+  def proverbs17
+		@proverbs17 = Proverb.where("chapter = '17'").all.pluck(:verse_text)
+		if params[:commit]
+			@params = params[:proverb]
+		end
+		@common = CommonWord.where("chapter_num = '17'").all
+		@common_sw = CommonWord.where("chapter_num = '17'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
+  end
+
+  def proverbs22
+		@proverbs22 = Proverb.where("chapter = '22'").all.pluck(:verse_text)
+		if params[:commit]
+			@params = params[:proverb]
+		end
+		@common = CommonWord.where("chapter_num = '22'").all
+		@common_sw = CommonWord.where("chapter_num = '22'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
   end
 
 end

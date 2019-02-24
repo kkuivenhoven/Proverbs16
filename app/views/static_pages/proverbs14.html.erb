@@ -1,0 +1,18 @@
+<% provide(:title, "14") %>
+
+<h4>Search for a word to be highlighted:</h4>
+<%= form_tag(static_pages_proverbs14_path, method: :get) do %>
+	<%= text_field_tag :proverb %>
+	<%= submit_tag 'Search' %>
+<% end %>
+<br><br>
+
+<div class="row">
+	
+	<%= render partial: 'partials/index_partial', locals: { proverb: @proverbs14 } %>
+
+	<div class="col-sm">
+		<%= render partial: 'partials/html_mapping', locals: { chapter_num: @common } %><br><br>
+	</div>
+
+</div>

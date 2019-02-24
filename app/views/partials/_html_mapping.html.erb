@@ -1,10 +1,7 @@
 
-<h2>HTML MAPPING</h2>
-	<% chapter_num.each do |c| %>
-		<%= c.inspect %><br>
-		<!--% @stopWords.each do |sW| %>
-			% c.delete(sW) %>	
-		% end %>
-		%= c %-->
-		<br><br>
-	<% end %>
+<h2>Verse Count</h2>
+
+<% @newHash.each do |key, value| %>
+	<%= key %>: <%= value %><br>
+<% end %>
+
