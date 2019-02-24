@@ -42,6 +42,7 @@ namespace :save_word_count do
 				if co.chapter_num == prov.chapter 
 					if co.verse_num == prov.verse_num
 							prov_wo = prov.verse_text.downcase.split.delete_if{|x| @stopWords.include?(x)}.join(' ')
+							prov_wo = prov_wo.downcase.gsub(/[^a-z0-9\s]/i, '')
 							a = prov_wo.split
 							h = a.group_by {|w| w}
 							b = h.map {|k,v| [k, v.size]}

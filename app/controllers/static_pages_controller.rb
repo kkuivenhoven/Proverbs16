@@ -233,6 +233,7 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '22'").all
 		@common_sw = CommonWord.where("chapter_num = '22'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
+    @newHash = @newHash.sort_by {|_key, value| value}
   end
 
 end
