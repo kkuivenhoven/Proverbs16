@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+	before_action :get_book_count
+
   def home
 		# @proverbs16 = Proverb.all
 		@proverbs16 = Proverb.all.pluck(:verse_text)
@@ -52,6 +54,7 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '1'").all
 		@common_sw = CommonWord.where("chapter_num = '1'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
+		@newHash = @newHash.sort_by { |key| key }.to_h
   end
 
   def proverbs4
@@ -235,5 +238,12 @@ class StaticPagesController < ApplicationController
 		@newHash = CommonWord.getCommonCount(@common_sw)
     @newHash = @newHash.sort_by {|_key, value| value}
   end
+
+
+	private
+		
+		def get_book_count
+			@key_values = CommonWord.getBookCount
+		end
 
 end
