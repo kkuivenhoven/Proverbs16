@@ -2,6 +2,34 @@
 <h2>Word Count</h2>
 
 <% @newHash.each do |key, value| %>
-	<%= key %>: <%= value %> &nbsp;•&nbsp;
+	<% if key == params[:proverb] %>
+		The word <b><%= key %></b> occurs <%= value %> times in Proverbs <%= @common.first.chapter_num %>.<br>
+		<% key_values.each do |key, value| %>
+			<% if key == params[:proverb] %>
+				The word <b><%= key %></b> occurs <%= value %> times in the book of Proverbs.<br><br>
+				<% entry = client.entry(params[:proverb]) %>
+				<% entries = entry.lexical_entries[0].entries %>
+				<% @meanings =  entries[0][:senses][0][:definitions] %>
+				<% if @meanings.length == 1 %>
+					Definition of <%= params[:proverb] %>:<br>
+				<% else %>
+					Definitions of <%= params[:proverb] %>:<br>
+				<% end %>
+				<% @meanings.each do |m| %>
+					• <%= m %><br>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% end %>
 <% end %>
+
+<!--br><br><br>
+
+ @newHash.each do |key, value| %>
+	% if key == params[:proverb] %>
+		<b>%= key %>: %= value %> &nbsp;•&nbsp;</b>
+	% else %>
+		%= key %>: %= value %> &nbsp;•&nbsp;
+	% end %>
+ end %-->
 

@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+	require 'oxford_dictionary'
+
 	before_action :get_book_count
 
   def home
@@ -55,6 +57,7 @@ class StaticPagesController < ApplicationController
 		@common_sw = CommonWord.where("chapter_num = '1'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
 		@newHash = @newHash.sort_by { |key| key }.to_h
+		@client = OxfordDictionary::Client.new(app_id: 'da2df368', app_key: '68d4697c872564768e7ab948da306934')
   end
 
   def proverbs4
