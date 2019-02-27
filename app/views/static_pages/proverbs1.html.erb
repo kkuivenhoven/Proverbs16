@@ -9,6 +9,10 @@
 
 <div class="row">
 
+	<% @sorted = @newHash.sort_by { |key, value| value}.reverse.to_h %>
+	<%= @sorted %>
+
+	<br><br><br>
 	<%= render partial: 'partials/index_partial', locals: { proverb: @proverbs1 } %>
 
 	<% if params[:commit] %>
