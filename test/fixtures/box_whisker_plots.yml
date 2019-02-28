@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  median: 1
+  first_quartile: 1
+  second_quartile: 1
+  third_quartile: 1
+  least: 1
+  greatest: 1
+  chart_id: 1
+
+two:
+  median: 1
+  first_quartile: 1
+  second_quartile: 1
+  third_quartile: 1
+  least: 1
+  greatest: 1
+  chart_id: 1

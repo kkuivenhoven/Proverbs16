@@ -5,16 +5,17 @@
 	<%= text_field_tag :proverb %>
 	<%= submit_tag 'Search' %>
 <% end %>
+
 <br><br>
 
 <div class="row">
 
   <%= render partial: 'partials/index_partial', locals: { proverb: @proverbs5 } %>
 
-	<% if params[:commit] %>
-		<div class="col-sm">
-			<%= render partial: 'partials/html_mapping', locals: { chapter_num: @common, key_values: @key_values, client: @client } %><br><br>
-		</div>
-	<% end %>
+		<% if params[:commit] %>
+			<div class="col-sm">
+				<%= render partial: 'partials/html_mapping', locals: { chapter_num: @common, key_values: @key_values, client: @client, bwp: @bwp } %><br><br>
+			</div>
+		<% end %>
 
 </div>

@@ -17,6 +17,7 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '16'").all
 		@common_sw = CommonWord.where("chapter_num = '16'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
+		@bwp = Chart.getBwp(16)
   end
 
   def proverbs19
@@ -27,6 +28,7 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '19'").all
 		@common_sw = CommonWord.where("chapter_num = '19'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
+		@bwp = Chart.getBwp(19)
   end
 
   def proverbs21
@@ -37,6 +39,7 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '21'").all
 		@common_sw = CommonWord.where("chapter_num = '21'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
+		@bwp = Chart.getBwp(21)
   end
 
   def proverbs7
@@ -47,6 +50,7 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '7'").all
 		@common_sw = CommonWord.where("chapter_num = '7'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
+		@bwp = Chart.getBwp(7)
   end
 
   def proverbs1
@@ -58,6 +62,7 @@ class StaticPagesController < ApplicationController
 		@common_sw = CommonWord.where("chapter_num = '1'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
 		@newHash = @newHash.sort_by { |key| key }.to_h
+		@bwp = Chart.getBwp(1)
   end
 
   def proverbs4
@@ -68,6 +73,7 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '4'").all
 		@common_sw = CommonWord.where("chapter_num = '4'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
+		@bwp = Chart.getBwp(4)
   end
 
   def proverbs27
@@ -78,6 +84,7 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '27'").all
 		@common_sw = CommonWord.where("chapter_num = '27'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
+		@bwp = Chart.getBwp(27)
   end
 
   def proverbs20
@@ -88,6 +95,7 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '20'").all
 		@common_sw = CommonWord.where("chapter_num = '20'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
+		@bwp = Chart.getBwp(20)
   end
 
   def proverbs5
@@ -98,6 +106,7 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '5'").all
 		@common_sw = CommonWord.where("chapter_num = '5'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
+		@bwp = Chart.getBwp(5)
   end
 
   def proverbs18
@@ -108,6 +117,7 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '18'").all
 		@common_sw = CommonWord.where("chapter_num = '18'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
+		@bwp = Chart.getBwp(18)
   end
 
   def proverbs2
@@ -118,6 +128,7 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '2'").all
 		@common_sw = CommonWord.where("chapter_num = '2'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
+		@bwp = Chart.getBwp(2)
   end
 
   def proverbs3
@@ -128,6 +139,7 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '3'").all
 		@common_sw = CommonWord.where("chapter_num = '3'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
+		@bwp = Chart.getBwp(3)
   end
 
   def proverbs6
@@ -138,6 +150,7 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '6'").all
 		@common_sw = CommonWord.where("chapter_num = '6'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
+		@bwp = Chart.getBwp(6)
   end
 
   def proverbs8
@@ -148,6 +161,7 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '8'").all
 		@common_sw = CommonWord.where("chapter_num = '8'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
+		@bwp = Chart.getBwp(8)
   end
 
   def proverbs9
@@ -158,6 +172,7 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '9'").all
 		@common_sw = CommonWord.where("chapter_num = '9'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
+		@bwp = Chart.getBwp(9)
   end
 
   def proverbs10
@@ -168,6 +183,7 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '10'").all
 		@common_sw = CommonWord.where("chapter_num = '10'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
+		@bwp = Chart.getBwp(10)
   end
 
   def proverbs11
@@ -178,6 +194,7 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '11'").all
 		@common_sw = CommonWord.where("chapter_num = '11'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
+		@bwp = Chart.getBwp(11)
   end
 
   def proverbs12
@@ -189,6 +206,7 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '12'").all
 		@common_sw = CommonWord.where("chapter_num = '12'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
+		@bwp = Chart.getBwp(12)
   end
 
   def proverbs13
@@ -199,6 +217,7 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '13'").all
 		@common_sw = CommonWord.where("chapter_num = '13'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
+		@bwp = Chart.getBwp(13)
   end
 
   def proverbs14
@@ -209,6 +228,7 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '14'").all
 		@common_sw = CommonWord.where("chapter_num = '14'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
+		@bwp = Chart.getBwp(14)
   end
 
   def proverbs15
@@ -219,6 +239,7 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '15'").all
 		@common_sw = CommonWord.where("chapter_num = '15'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
+		@bwp = Chart.getBwp(15)
   end
 
   def proverbs17
@@ -229,6 +250,7 @@ class StaticPagesController < ApplicationController
 		@common = CommonWord.where("chapter_num = '17'").all
 		@common_sw = CommonWord.where("chapter_num = '17'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
+		@bwp = Chart.getBwp(17)
   end
 
   def proverbs22
@@ -240,11 +262,15 @@ class StaticPagesController < ApplicationController
 		@common_sw = CommonWord.where("chapter_num = '22'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
     @newHash = @newHash.sort_by {|_key, value| value}
+		@bwp = Chart.getBwp(22)
   end
 
 
 	private
 		
+		def get_bwp
+		end
+
 		def get_book_count
 			@key_values = CommonWord.getBookCount
 		end
