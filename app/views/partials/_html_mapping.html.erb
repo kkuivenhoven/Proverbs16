@@ -22,21 +22,19 @@
 					<% end %>
 
 				<% rescue OxfordDictionary::Error %>
-					No Oxford Dictionary entry available for the word <%= params[:proverb] %>.
+					No Oxford Dictionary entry available for the word <%= params[:proverb] %>.<br>
 				<% end %>
+				<br>
+				Box and Whisker Plot breakdown of recurring words:<br>
+				Least: <%= bwp.least %><br>
+				First Quartile: <%= bwp.first_quartile %><br>
+				Median: <%= bwp.median %><br>
+				Third Quartile: <%= bwp.third_quartile %><br>
+				Greatest: <%= bwp.greatest %><br>
 
 			<% end %>
 		<% end %>
 	<% end %>
 <% end %>
 
-<!--br><br><br>
-
- @newHash.each do |key, value| %>
-	% if key == params[:proverb] %>
-		<b>%= key %>: %= value %> &nbsp;•&nbsp;</b>
-	% else %>
-		%= key %>: %= value %> &nbsp;•&nbsp;
-	% end %>
- end %-->
 

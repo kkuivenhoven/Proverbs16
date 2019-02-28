@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190224211419) do
+ActiveRecord::Schema.define(version: 20190228004602) do
+
+  create_table "box_whisker_plots", force: :cascade do |t|
+    t.float    "median"
+    t.float    "first_quartile"
+    t.integer  "second_quartile"
+    t.float    "third_quartile"
+    t.float    "least"
+    t.float    "greatest"
+    t.integer  "chart_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "charts", force: :cascade do |t|
+    t.string   "chart_type"
+    t.integer  "chapter"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "common_words", force: :cascade do |t|
     t.integer  "chapter_num"
