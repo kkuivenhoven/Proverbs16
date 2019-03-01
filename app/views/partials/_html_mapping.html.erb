@@ -1,9 +1,12 @@
 <% @newHash.each do |key, value| %>
 	<% if key == params[:proverb] %>
 		The word <b><%= key %></b> occurs <%= value %> times in Proverbs <%= @common.first.chapter_num %>.<br>
-		<% key_values.each do |key, value| %>
-			<% if key == params[:proverb] %>
-				The word <b><%= key %></b> occurs <%= value %> times in the book of Proverbs.<br><br>
+		<% @hash = @newHash.group_by(&:first).map { |k, v| [k, v.map(&:last)] }.to_h %>
+		<% keyIndice = @hash.find_index{ |k,_| k == key } %>
+		<% key_values.each do |keyy, valuee| %>
+			<% if keyy == params[:proverb] %>
+				The word <b><%= keyy %></b> occurs <%= valuee %> times in the book of Proverbs.<br><br>
+
 				<% begin %>
 					<% entry = client.entry(params[:proverb]) %>
 					<% entries = entry.lexical_entries[0].entries %>
@@ -24,13 +27,30 @@
 				<% rescue OxfordDictionary::Error %>
 					No Oxford Dictionary entry available for the word <%= params[:proverb] %>.<br>
 				<% end %>
+
 				<br>
-				Box and Whisker Plot breakdown of recurring words:<br>
-				Least: <%= bwp.least %><br>
-				First Quartile: <%= bwp.first_quartile %><br>
-				Median: <%= bwp.median %><br>
-				Third Quartile: <%= bwp.third_quartile %><br>
-				Greatest: <%= bwp.greatest %><br>
+				<!--Box and Whisker Plot breakdown of recurring words:<br>
+				Least: %= bwp.least %><br>
+				First Quartile: %= bwp.first_quartile %><br>
+				Median: %= bwp.median %><br>
+				Third Quartile: %= bwp.third_quartile %><br>
+				Greatest: %= bwp.greatest %><br><br>
+
+				Indice of %= params[:proverb] %>: %= keyIndice %><br>
+				Least_indice: %= bwp.least_indice %><br>
+				First Quartile_indice: %= bwp.first_quartile_indice %><br>
+				Median_indice: %= bwp.median_indice %><br>
+				Third Quartile_indice: %= bwp.third_quartile_indice %><br>
+				Greatest_indice: %= bwp.greatest_indice %><br-->
+				<% if keyIndice.between?(bwp.least_indice, bwp.first_quartile_indice) %>
+					The word <b><%= params[:proverb] %></b> occurs within the first quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
+				<% elsif keyIndice.between?(bwp.first_quartile_indice, bwp.median) %>
+					The word <b><%= params[:proverb] %></b> occurs within the second quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
+				<% elsif keyIndice.between?(bwp.median, bwp.third_quartile_indice) %>
+					The word <b><%= params[:proverb] %></b> occurs within the third quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
+				<% elsif keyIndice.between?(bwp.third_quartile_indice, bwp.greatest) %>
+					The word <b><%= params[:proverb] %></b> occurs within the fourth quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
+				<% end %>
 
 			<% end %>
 		<% end %>

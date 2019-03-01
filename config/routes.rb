@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get 'static_pages/proverbs20'
   get 'static_pages/proverbs21'
   get 'static_pages/proverbs22'
+  get 'static_pages/proverbs23'
   get 'static_pages/proverbs27'
 
 	# root controller: :static_pages, action: :home

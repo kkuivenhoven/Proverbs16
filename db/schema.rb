@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190228004602) do
+ActiveRecord::Schema.define(version: 20190228203341) do
 
   create_table "box_whisker_plots", force: :cascade do |t|
     t.float    "median"
@@ -20,8 +20,13 @@ ActiveRecord::Schema.define(version: 20190228004602) do
     t.float    "least"
     t.float    "greatest"
     t.integer  "chart_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.integer  "least_indice"
+    t.integer  "greatest_indice"
+    t.integer  "median_indice"
+    t.integer  "first_quartile_indice"
+    t.integer  "third_quartile_indice"
   end
 
   create_table "charts", force: :cascade do |t|

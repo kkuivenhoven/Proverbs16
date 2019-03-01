@@ -265,12 +265,23 @@ class StaticPagesController < ApplicationController
 		@bwp = Chart.getBwp(22)
   end
 
+  def proverbs23
+		@proverbs23 = Proverb.where("chapter = '23'").all.pluck(:verse_text)
+		if params[:commit]
+			@params = params[:proverb]
+		end
+		@common = CommonWord.where("chapter_num = '23'").all
+		@common_sw = CommonWord.where("chapter_num = '23'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
+    @newHash = @newHash.sort_by {|_key, value| value}
+		@bwp = Chart.getBwp(23)
+  end
+
+
+	private
 
 	private
 		
-		def get_bwp
-		end
-
 		def get_book_count
 			@key_values = CommonWord.getBookCount
 		end
