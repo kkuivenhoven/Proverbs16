@@ -1,15 +1,29 @@
-<h1>StaticPages#home</h1>
+<% provide(:title, "Home") %>
 
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-sm">
+		</div>
+		<div class="col-sm">
+			<center>
+				<p>
+					Welcome to bookofproverbs.com. Here, users are able to search for particular recurring words in the book of Proverbs from the NIV Study Bible, 10th Anniversary Edition, copyright 1995 by Zondervan. Upon searching for words, users will also learn statistical information about that particular word as well as the Oxford Dictionary definition of the word.
+				</p>
+			</center>
+		</div>
+		<div class="col-sm">
+		</div>
+	</div>
+</div>
 
 <html>
   <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      google.charts.load('current', {packages:['wordtree']});
+      /*google.charts.load('current', {packages:['wordtree']});
       google.charts.setOnLoadCallback(drawChart);
 
-			var proverbs16 = '<%= @proverbs16 %>';
+			var proverbs16 = '%= @proverbs16 %>';
 			proverbs16 = proverbs16.split(";, &");
 			// console.log("proverbs16: " + proverbs16);
 			for(var i = 0; i < proverbs16.length; i++){
@@ -37,6 +51,7 @@
 
 			var que = [];
 			que[0] = result;
+			*/
 
 			/* for(var i=0; i < result.length; i++){
 				console.log("typeof(result["+i+"]: " + typeof(result));
@@ -91,7 +106,7 @@
 			];
 */
 
-
+/*
 var verses = [
 ["Jesus wept. - John 11:35"],
 ["Rejoice always, - 1 Thessalonians 5:16"],
@@ -114,6 +129,7 @@ var verses = [
       function drawChart() {
         var data = google.visualization.arrayToDataTable(verses);
         // var data = google.visualization.arrayToDataTable(proverbs16);
+		*/
           /*[ ['Phrases'],
             ['cats are better than dogs'],
             ['cats eat kibble'],
@@ -136,7 +152,7 @@ var verses = [
           ]
         );*/
 
-        var options = {
+        /*var options = {
           wordtree: {
             format: 'implicit',
             word: 'cats'
@@ -145,7 +161,7 @@ var verses = [
 
         var chart = new google.visualization.WordTree(document.getElementById('wordtree_basic'));
         chart.draw(data, options);
-      }
+      }*/
     </script>
   </head>
   <body>

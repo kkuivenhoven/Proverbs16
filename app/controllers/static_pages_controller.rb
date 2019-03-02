@@ -5,8 +5,6 @@ class StaticPagesController < ApplicationController
 	before_action :set_dictionary
 
   def home
-		# @proverbs16 = Proverb.all
-		@proverbs16 = Proverb.all.pluck(:verse_text)
   end
 
   def proverbs16

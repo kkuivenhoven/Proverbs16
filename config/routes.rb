@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'common/words'
   get 'common/totalCount'
 
-  # get 'static_pages/help'
+  get 'static_pages/help'
   get 'static_pages/proverbs1'
   get 'static_pages/proverbs2'
   get 'static_pages/proverbs3'
@@ -35,8 +35,8 @@ Rails.application.routes.draw do
   get 'static_pages/proverbs30'
   get 'static_pages/proverbs31'
 
-	# root controller: :static_pages, action: :home
-	root controller: :static_pages, action: :proverbs1
+	root controller: :static_pages, action: :home
+	# root controller: :static_pages, action: :proverbs1
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
