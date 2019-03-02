@@ -1,7 +1,7 @@
-<% provide(:title, "22") %>
+<% provide(:title, "31") %>
 
 <h4>Search for a word to be highlighted, for statistical information and definition:</h4>
-<%= form_tag(static_pages_proverbs22_path, method: :get) do %>
+<%= form_tag(static_pages_proverbs31_path, method: :get) do %>
 	<%= text_field_tag :proverb %>
 	<%= submit_tag 'Search' %>
 <% end %>
@@ -9,7 +9,7 @@
 
 <div class="row">
 	
-	<%= render partial: 'partials/index_partial', locals: { proverb: @proverbs22 } %>
+	<%= render partial: 'partials/index_partial', locals: { proverb: @proverbs31 } %>
 
 	<% if params[:commit] %>
 		<div class="col-sm">

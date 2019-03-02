@@ -132,6 +132,7 @@ class StaticPagesController < ApplicationController
   end
 
   def proverbs3
+=begin
 		@proverbs3 = Proverb.where("chapter = '3'").all.pluck(:verse_text)
 		if params[:commit]
 			@params = params[:proverb]
@@ -140,6 +141,7 @@ class StaticPagesController < ApplicationController
 		@common_sw = CommonWord.where("chapter_num = '3'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
 		@bwp = Chart.getBwp(3)
+=end
   end
 
   def proverbs6
@@ -277,8 +279,92 @@ class StaticPagesController < ApplicationController
 		@bwp = Chart.getBwp(23)
   end
 
+  def proverbs24
+		@proverbs24 = Proverb.where("chapter = '24'").all.pluck(:verse_text)
+		if params[:commit]
+			@params = params[:proverb]
+		end
+		@common = CommonWord.where("chapter_num = '24'").all
+		@common_sw = CommonWord.where("chapter_num = '24'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
+    @newHash = @newHash.sort_by {|_key, value| value}
+		@bwp = Chart.getBwp(24)
+  end
 
-	private
+  def proverbs25
+		@proverbs25 = Proverb.where("chapter = '25'").all.pluck(:verse_text)
+		if params[:commit]
+			@params = params[:proverb]
+		end
+		@common = CommonWord.where("chapter_num = '25'").all
+		@common_sw = CommonWord.where("chapter_num = '25'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
+    @newHash = @newHash.sort_by {|_key, value| value}
+		@bwp = Chart.getBwp(25)
+  end
+
+  def proverbs26
+		@proverbs26 = Proverb.where("chapter = '26'").all.pluck(:verse_text)
+		if params[:commit]
+			@params = params[:proverb]
+		end
+		@common = CommonWord.where("chapter_num = '26'").all
+		@common_sw = CommonWord.where("chapter_num = '26'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
+    @newHash = @newHash.sort_by {|_key, value| value}
+		@bwp = Chart.getBwp(26)
+  end
+
+
+  def proverbs28
+=begin
+		@proverbs28 = Proverb.where("chapter = '28'").all.pluck(:verse_text)
+		if params[:commit]
+			@params = params[:proverb]
+		end
+		@common = CommonWord.where("chapter_num = '28'").all
+		@common_sw = CommonWord.where("chapter_num = '28'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
+    @newHash = @newHash.sort_by {|_key, value| value}
+		@bwp = Chart.getBwp(28)
+=end
+  end
+
+  def proverbs29
+		@proverbs29 = Proverb.where("chapter = '29'").all.pluck(:verse_text)
+		if params[:commit]
+			@params = params[:proverb]
+		end
+		@common = CommonWord.where("chapter_num = '29'").all
+		@common_sw = CommonWord.where("chapter_num = '29'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
+    @newHash = @newHash.sort_by {|_key, value| value}
+		@bwp = Chart.getBwp(29)
+  end
+
+  def proverbs30
+		@proverbs30 = Proverb.where("chapter = '30'").all.pluck(:verse_text)
+		if params[:commit]
+			@params = params[:proverb]
+		end
+		@common = CommonWord.where("chapter_num = '30'").all
+		@common_sw = CommonWord.where("chapter_num = '30'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
+    @newHash = @newHash.sort_by {|_key, value| value}
+		@bwp = Chart.getBwp(30)
+  end
+
+  def proverbs31
+		@proverbs31 = Proverb.where("chapter = '31'").all.pluck(:verse_text)
+		if params[:commit]
+			@params = params[:proverb]
+		end
+		@common = CommonWord.where("chapter_num = '31'").all
+		@common_sw = CommonWord.where("chapter_num = '31'").all.pluck(:verse_num_sw)
+		@newHash = CommonWord.getCommonCount(@common_sw)
+    @newHash = @newHash.sort_by {|_key, value| value}
+		@bwp = Chart.getBwp(31)
+  end
 
 	private
 		
