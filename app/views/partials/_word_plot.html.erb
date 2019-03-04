@@ -1,37 +1,35 @@
-<!DOCTYPE html>
 <html>
-	<head>
-		<script src= "https://cdn.zingchart.com/zingchart.min.js"></script>
-		<script> zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
-		ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9","ee6b7db5b51705a13dc2339db3edaf6d"];</script>  <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
-	<body>
-		<div id='myChart'></div>
-	</body>
+  <head>
+    <script src= "https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script> zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9","ee6b7db5b51705a13dc2339db3edaf6d"];</script>  <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
 </html>
+    <div id='myChart'></div>
 
 <style>
-html, body {
-	height:100%;
-	width:100%;
-	margin:0;
-	padding:0;
+html {
+  height:100%;
+  width:100%;
+  margin:0;
+  padding:0;
 }
 #myChart {
-	height:100%;
-	width:100%;
-	min-height:150px;
+  height:100%;
+  width:100%;
+  min-height:150px;
 }
 .zc-ref {
-	display:none;
+  display:none;
 }
 </style>
 
 <% @total = Array.new %>
-<% @proverbs16.each do |prov| %>
-	<% @total.push(prov) %>
+<% proverb.each do |prov| %>
+  <% @total.push(prov) %>
 <% end %>
 
 <% @newT =  @total.join(" ") %><br>
+
 
 
 <script>
@@ -79,10 +77,10 @@ var myConfig = {
 };
 
 zingchart.render({ 
-	id: 'myChart', 
-	data: myConfig, 
-	height: '100%', 
-	width: '100%' 
+  id: 'myChart', 
+  data: myConfig, 
+  height: '100%', 
+  width: '100%' 
 });
 
 </script>
