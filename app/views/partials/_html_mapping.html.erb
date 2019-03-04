@@ -28,7 +28,6 @@
 					No Oxford Dictionary entry available for the word <%= params[:proverb] %>.<br>
 				<% end %>
 
-				<br>
 				<!--Box and Whisker Plot breakdown of recurring words:<br>
 				Least: %= bwp.least %><br>
 				First Quartile: %= bwp.first_quartile %><br>
@@ -42,6 +41,9 @@
 				Median_indice: %= bwp.median_indice %><br>
 				Third Quartile_indice: %= bwp.third_quartile_indice %><br>
 				Greatest_indice: %= bwp.greatest_indice %><br-->
+
+				<%= render partial: 'partials/bwp_chart', locals: { bwp: bwp, ch: @common.first.chapter_num } %>
+
 				<% if keyIndice.between?(bwp.least_indice, bwp.first_quartile_indice) %>
 					The word <b><%= params[:proverb] %></b> occurs within the first quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
 				<% elsif keyIndice.between?(bwp.first_quartile_indice, bwp.median) %>
