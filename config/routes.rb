@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'common/words'
   get 'common/totalCount'
+  get 'common/plot'
 
   get 'static_pages/help'
   get 'static_pages/proverbs1'

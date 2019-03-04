@@ -1,0 +1,56 @@
+<div id="myChart"></div>
+
+<script>
+
+var bwp = [];
+bwp.push(parseInt('<%= bwp.least %>'));
+bwp.push(parseInt('<%= bwp.first_quartile %>'));
+bwp.push(parseInt('<%= bwp.median %>'));
+bwp.push(parseInt('<%= bwp.third_quartile %>'));
+bwp.push(parseInt('<%= bwp.greatest %>'));
+
+var myConfig = {
+    "graphset":[
+        {
+            "type":"hboxplot",
+            "plotarea":{ "margin":"100" },
+            "scaleX":{
+                "guide":{ "visible":false },
+                "label":{ "text":"Experiment No." },
+                "values":["1"]
+            },
+            "scaleY":{
+                "label":{ "text":"Observations" }
+            },
+            tooltip:{
+              paddingBottom:20
+            },
+            "options":{
+                "box":{
+                    "barWidth":0.5,
+                    "tooltip":{
+                        "text":"<span style=\"font-style:italic;\">Experiment no. %scale-key-text</span><br><b style=\"font-size:15px;\">Observations:</b><br><br>Maximum: <b>%data-max</b><br>Upper Quartile: <b>%data-upper-quartile</b><br>Median: <b>%data-median</b><br>Lower Quartile: <b>%data-lower-quartile</b><br>Minimum: <b>%data-min</b>"
+                    }
+                },
+                "outlier":{
+                    "tooltip":{
+                        "text":"<span style=\"font-style:italic;\">Experiment no. %scale-key-text</span><br><b style=\"font-size:15px;\">Observation: %node-value</b>"
+                    },
+                    "marker":{ "type":"circle" }
+                }
+            },
+            "series":[
+                { "dataBox": [bwp], }
+            ]
+        }
+    ]
+};
+
+zingchart.render({ 
+  id : 'myChart', 
+  data : myConfig, 
+  height: "99%", 
+  width: "99%"
+});
+
+</script>
