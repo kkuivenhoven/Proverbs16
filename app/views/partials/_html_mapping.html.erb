@@ -48,7 +48,7 @@
 					The word <b><%= params[:proverb] %></b> occurs within the second quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
 				<% elsif keyIndice.between?(bwp.median, bwp.third_quartile_indice) %>
 					The word <b><%= params[:proverb] %></b> occurs within the third quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
-				<% elsif keyIndice.between?(bwp.third_quartile_indice, bwp.greatest) %>
+				<% elsif keyIndice.between?(bwp.third_quartile_indice, bwp.greatest_indice) %>
 					The word <b><%= params[:proverb] %></b> occurs within the fourth quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
 				<% end %>
 
