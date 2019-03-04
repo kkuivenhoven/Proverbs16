@@ -9,12 +9,12 @@
 
 <div class="row">
 
-	<!--%= render partial: 'partials/index_partial', locals: { proverb: @proverbs3 } %>
+	<%= render partial: 'partials/index_partial', locals: { proverb: @proverbs3 } %>
 
-	% if params[:commit] %>
+	<% if params[:commit] %>
 		<div class="col-sm">
-			%= render partial: 'partials/html_mapping', locals: { chapter_num: @common, key_values: @key_values, client: @client, bwp: @bwp  } %><br><br>
+			<%= render partial: 'partials/html_mapping', locals: { chapter_num: @common, key_values: @key_values, client: @client, bwp: @bwp  } %><br><br>
 		</div>
-	% end %-->
+	<% end %>
 
 </div>

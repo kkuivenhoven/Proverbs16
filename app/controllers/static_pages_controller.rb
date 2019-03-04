@@ -130,7 +130,6 @@ class StaticPagesController < ApplicationController
   end
 
   def proverbs3
-=begin
 		@proverbs3 = Proverb.where("chapter = '3'").all.pluck(:verse_text)
 		if params[:commit]
 			@params = params[:proverb]
@@ -139,7 +138,6 @@ class StaticPagesController < ApplicationController
 		@common_sw = CommonWord.where("chapter_num = '3'").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
 		@bwp = Chart.getBwp(3)
-=end
   end
 
   def proverbs6
@@ -315,7 +313,6 @@ class StaticPagesController < ApplicationController
 
 
   def proverbs28
-=begin
 		@proverbs28 = Proverb.where("chapter = '28'").all.pluck(:verse_text)
 		if params[:commit]
 			@params = params[:proverb]
@@ -325,7 +322,6 @@ class StaticPagesController < ApplicationController
 		@newHash = CommonWord.getCommonCount(@common_sw)
     @newHash = @newHash.sort_by {|_key, value| value}
 		@bwp = Chart.getBwp(28)
-=end
   end
 
   def proverbs29
