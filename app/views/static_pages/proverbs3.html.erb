@@ -1,12 +1,12 @@
 <% provide(:title, "3") %>
 
+<%= render partial: 'partials/word_plot', locals: { proverb: @proverbs3 } %>
+
 <h4>Search for a word to be highlighted, for statistical information and definition:</h4>
 <%= form_tag(static_pages_proverbs3_path, method: :get) do %>
 	<%= text_field_tag :proverb %>
 	<%= submit_tag 'Search' %>
 <% end %>
-<br><br>
-	<%= render partial: 'partials/word_plot', locals: { proverb: @proverbs3 } %>
 <br>
 
 <div class="row">
