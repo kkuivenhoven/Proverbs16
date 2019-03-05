@@ -10,6 +10,7 @@
 				<% begin %>
 					<% entry = client.entry(params[:proverb]) %>
 					<% entries = entry.lexical_entries[0].entries %>
+					<% pronun = entry.lexical_entries[0].pronunciations[0][:phonetic_spelling] %>
 					<% @meanings =  entries[0][:senses][0][:definitions] %>
 					<% if @meanings.length == 0 %>
 						No Oxford Dictionary entry available for the word <%= params[:proverb] %>.
@@ -19,8 +20,9 @@
 						<% else %>
 							Oxford Dictionary definitions of <%= params[:proverb] %>:<br>
 						<% end %>
+						&nbsp;&nbsp;&nbsp;&nbsp;<i><small>pronunciation:</i></small> <%= pronun %><br>
 						<% @meanings.each do |m| %>
-							• <%= m %><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;• <%= m %><br>
 						<% end %>
 					<% end %>
 
@@ -45,13 +47,13 @@
 				<%= render partial: 'partials/bwp_chart', locals: { bwp: bwp, ch: @common.first.chapter_num } %>
 
 				<% if keyIndice.between?(bwp.least_indice, bwp.first_quartile_indice) %>
-					The word <b><%= params[:proverb] %></b> occurs within the first quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
+					&nbsp;&nbsp;&nbsp;&nbsp;The word <b><%= params[:proverb] %></b> occurs within the first quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
 				<% elsif keyIndice.between?(bwp.first_quartile_indice, bwp.median) %>
-					The word <b><%= params[:proverb] %></b> occurs within the second quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
+					&nbsp;&nbsp;&nbsp;&nbsp;The word <b><%= params[:proverb] %></b> occurs within the second quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
 				<% elsif keyIndice.between?(bwp.median, bwp.third_quartile_indice) %>
-					The word <b><%= params[:proverb] %></b> occurs within the third quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
+					&nbsp;&nbsp;&nbsp;&nbsp;The word <b><%= params[:proverb] %></b> occurs within the third quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
 				<% elsif keyIndice.between?(bwp.third_quartile_indice, bwp.greatest_indice) %>
-					The word <b><%= params[:proverb] %></b> occurs within the fourth quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
+					&nbsp;&nbsp;&nbsp;&nbsp;The word <b><%= params[:proverb] %></b> occurs within the fourth quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
 				<% end %>
 
 			<% end %>
