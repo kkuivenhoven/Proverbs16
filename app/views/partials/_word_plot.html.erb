@@ -24,7 +24,6 @@ html {
 </style>
 
 <% @sw = StopWord.all.pluck(:word) %>
-<%= @sw.class %><br>
 
 <% @total = Array.new %>
 <% proverb.each do |prov| %>
@@ -32,8 +31,6 @@ html {
 <% end %>
 
 <% @newT =  @total.join(" ") %><br>
-<%= @newT %><br>
-<%= @newT.class %><br>
 
 <script>
 
