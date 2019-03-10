@@ -1,5 +1,9 @@
 namespace :add_charts do
 
+	# This code snippet iterates through each chapter, grabs the word count (i.e. how many times the word is repeated in the chapter) and calculates the values for a box and whisker plot. 
+	# The following cases are handled: (1) when there is an even amount of data numbers and (2) when there is an odd amount of data numbers.
+	# Once the values are calculated, the value and the array indice are stored for that entry into the BoxWhiskerPlot model.
+
   desc "TODO"
   task add_box_whisker_data: :environment do
 		chapters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
