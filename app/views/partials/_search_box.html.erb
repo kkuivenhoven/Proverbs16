@@ -1,0 +1,8 @@
+
+<p>Search for a word to be highlighted, for statistical information and definition:</p>
+<%= form_tag(path, method: :get) do %>
+  <%= text_field_tag :proverb, "Search for a word", style: 'color: #f78062;' %>
+  <%= submit_tag 'Search', :class => "btn btn-xs btn-light" %>
+<% end %>
+
+

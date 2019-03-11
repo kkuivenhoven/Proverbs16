@@ -1,13 +1,8 @@
 <% provide(:title, "21") %>
+<% provide(:p, "#{ render partial: 'partials/search_box', locals: { path: static_pages_proverbs21_path }}".html_safe) %>
 
 <%= render partial: 'partials/word_plot', locals: { proverb: @proverbs21 } %>
 
-<h4>Search for a word to be highlighted, for statistical information and definition:</h4>
-<%= form_tag(static_pages_proverbs21_path, method: :get) do %>
-	<%= text_field_tag :proverb %>
-	<%= submit_tag 'Search' %>
-<% end %>
-<br>
 
 <div class="row">
 	
