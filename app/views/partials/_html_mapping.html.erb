@@ -23,7 +23,9 @@
 						Pearson Dictionary definitions of <b><%= params[:proverb] %>:</b><br>
 					<% end %>
 					<% p_meanings.each do |m| %>
-						&nbsp;&nbsp;&nbsp;&nbsp;<i><small><%= m.part_of_speech %></i></small><br>
+						<% if !m.part_of_speech.nil? %>
+							&nbsp;&nbsp;&nbsp;&nbsp;<i><small><%= m.part_of_speech %></i></small><br>
+						<% end %>
 						&nbsp;&nbsp;&nbsp;&nbsp;• <%= m.denotation %><br>
 					<% end %>
 				<% rescue DictionaryLookup::Error %>
