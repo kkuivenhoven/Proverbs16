@@ -12,3 +12,18 @@
  *
  */
 @import 'bootstrap';
+
+nav {
+	margin-left: 40px;
+	a {
+		color: #fc4a1a;
+		font-weight: bold;
+	}
+}
+
+.jumbotron {
+	background-color: #4abdac;
+	h2 {
+		// color: red;
+	}
+}
