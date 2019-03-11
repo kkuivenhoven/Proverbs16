@@ -1,12 +1,19 @@
 <% @newHash.each do |key, value| %>
 	<% if key.singularize == params[:proverb].singularize %>
-		The word <b><%= key %></b> (or <b><%= key.singularize %></b>) occurs <%= value %> times in Proverbs <%= @common.first.chapter_num %>.<br>
+		<% if key.singularize == params[:proverb] %>
+			The word <b><%= key %></b> occurs <%= value %> times in Proverbs <%= @common.first.chapter_num %>.<br>
+		<% else %>
+			The word <b><%= key %></b> (or <b><%= key.singularize %></b>) occurs <%= value %> times in Proverbs <%= @common.first.chapter_num %>.<br>
+		<% end %>
 		<% @hash = @newHash.group_by(&:first).map { |k, v| [k, v.map(&:last)] }.to_h %>
 		<% keyIndice = @hash.find_index{ |k,_| k == key } %>
 		<% key_values.each do |keyy, valuee| %>
 			<% if keyy.singularize == params[:proverb].singularize %>
-			<%= keyy %><br>
-				The word <b><%= keyy %></b> (or <b><%= keyy.singularize %></b>) occurs <%= valuee %> times in the book of Proverbs.<br><br>
+				<% if keyy.singularize == params[:proverb] %>
+					The word <b><%= keyy %></b> occurs <%= valuee %> times in the book of Proverbs.<br><br>
+				<% else %>
+					The word <b><%= keyy %></b> (or <b><%= keyy.singularize %></b>) occurs <%= valuee %> times in the book of Proverbs.<br><br>
+				<% end %>
 
 				<% begin %>
 					<% p_meanings = DictionaryLookup::Base.define(params[:proverb].singularize) %>
