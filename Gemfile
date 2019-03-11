@@ -7,6 +7,7 @@ end
 
 gem 'bootstrap'
 gem 'oxford_dictionary'
+gem 'dictionary_lookup'
 gem 'rspec', '~> 3.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

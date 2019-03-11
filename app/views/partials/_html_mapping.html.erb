@@ -8,17 +8,33 @@
 				The word <b><%= keyy %></b> occurs <%= valuee %> times in the book of Proverbs.<br><br>
 
 				<% begin %>
+					<% p_meanings = DictionaryLookup::Base.define(params[:proverb]) %>
+					<% if p_meanings.length == 1 %>
+						Pearson Dictionary definition of <b><%= params[:proverb] %>:</b><br>
+					<% else %>
+						Pearson Dictionary definitions of <b><%= params[:proverb] %>:</b><br>
+					<% end %>
+					<% p_meanings.each do |m| %>
+						&nbsp;&nbsp;&nbsp;&nbsp;<i><small><%= m.part_of_speech %></i></small><br>
+						&nbsp;&nbsp;&nbsp;&nbsp;• <%= m.denotation %><br>
+					<% end %>
+				<% rescue DictionaryLookup::Error %>
+						No Pearson Dictionary entry available for the word <b><%= params[:proverb] %></b>.<br>
+				<% end %>
+				
+					<Br>
+				<% begin %>
 					<% entry = client.entry(params[:proverb]) %>
 					<% entries = entry.lexical_entries[0].entries %>
 					<% pronun = entry.lexical_entries[0].pronunciations[0][:phonetic_spelling] %>
 					<% @meanings =  entries[0][:senses][0][:definitions] %>
 					<% if @meanings.length == 0 %>
-						No Oxford Dictionary entry available for the word <%= params[:proverb] %>.
+						No Oxford Dictionary entry available for the word <b><%= params[:proverb] %></b>.
 					<% else %>
 						<% if @meanings.length == 1 %>
-							Oxford Dictionary definition of <%= params[:proverb] %>:<br>
+							Oxford Dictionary definition of <b><%= params[:proverb] %>:</b><br>
 						<% else %>
-							Oxford Dictionary definitions of <%= params[:proverb] %>:<br>
+							Oxford Dictionary definitions of <b><%= params[:proverb] %>:</b><br>
 						<% end %>
 						&nbsp;&nbsp;&nbsp;&nbsp;<i><small>pronunciation:</i></small> <%= pronun %><br>
 						<% @meanings.each do |m| %>
@@ -27,7 +43,7 @@
 					<% end %>
 
 				<% rescue OxfordDictionary::Error %>
-					No Oxford Dictionary entry available for the word <%= params[:proverb] %>.<br>
+					No Oxford Dictionary entry available for the word <b><%= params[:proverb] %></b>.<br>
 				<% end %>
 
 				<!--Box and Whisker Plot breakdown of recurring words:<br>
@@ -44,17 +60,19 @@
 				Third Quartile_indice: %= bwp.third_quartile_indice %><br>
 				Greatest_indice: %= bwp.greatest_indice %><br-->
 
-				<%= render partial: 'partials/bwp_chart', locals: { bwp: bwp, ch: @common.first.chapter_num } %>
+				<br><br>
 
 				<% if keyIndice.between?(bwp.least_indice, bwp.first_quartile_indice) %>
-					&nbsp;&nbsp;&nbsp;&nbsp;The word <b><%= params[:proverb] %></b> occurs within the first quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
+					The word <b><%= params[:proverb] %></b> occurs within the first quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
 				<% elsif keyIndice.between?(bwp.first_quartile_indice, bwp.median) %>
-					&nbsp;&nbsp;&nbsp;&nbsp;The word <b><%= params[:proverb] %></b> occurs within the second quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
+					The word <b><%= params[:proverb] %></b> occurs within the second quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
 				<% elsif keyIndice.between?(bwp.median, bwp.third_quartile_indice) %>
-					&nbsp;&nbsp;&nbsp;&nbsp;The word <b><%= params[:proverb] %></b> occurs within the third quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
+					The word <b><%= params[:proverb] %></b> occurs within the third quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
 				<% elsif keyIndice.between?(bwp.third_quartile_indice, bwp.greatest_indice) %>
-					&nbsp;&nbsp;&nbsp;&nbsp;The word <b><%= params[:proverb] %></b> occurs within the fourth quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
+					The word <b><%= params[:proverb] %></b> occurs within the fourth quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
 				<% end %>
+
+				<%= render partial: 'partials/bwp_chart', locals: { bwp: bwp, ch: @common.first.chapter_num } %>
 
 			<% end %>
 		<% end %>

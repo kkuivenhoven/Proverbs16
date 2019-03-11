@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
 	require 'oxford_dictionary'
+	require 'dictionary_lookup'
 
 	before_action :get_book_count
 	before_action :set_dictionary
