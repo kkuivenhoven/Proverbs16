@@ -1,7 +1,33 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  word: MyText
+  word: "a"
 
 two:
-  word: MyText
+  word: "of"
+
+three:
+  word: "for"
+
+four:
+  word: "and"
+
+five:
+  word: "is"
+
+six:
+  word: "what"
+
+seven:
+  word: "to"
+
+eight:
+  word: "your"
+
+nine:
+  word: "if"
+
+ten:
+  word: "you"
+
+

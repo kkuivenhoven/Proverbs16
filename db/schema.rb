@@ -10,12 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190228203341) do
+ActiveRecord::Schema.define(version: 20190312191855) do
 
   create_table "box_whisker_plots", force: :cascade do |t|
     t.float    "median"
     t.float    "first_quartile"
-    t.integer  "second_quartile"
     t.float    "third_quartile"
     t.float    "least"
     t.float    "greatest"

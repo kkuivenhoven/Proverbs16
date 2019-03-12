@@ -2,6 +2,9 @@
 
 one:
   chapter: 1
+  chart_type: 'box_whisker_plot'
 
 two:
-  chapter: 1
+  chapter: 2
+  chart_type: 'box_whisker_plot'
+

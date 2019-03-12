@@ -1,11 +1,44 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+one_one:
   chapter_num: 1
   verse_num: 1
-  word_num: MyText
+  word_num: {"of"=>3, "king"=>1, "David,"=>1, "son"=>1, "Solomon"=>1, "The"=>1, "proverbs"=>1, "Israel:"=>1}
+	verse_num_sw: {"israel"=>1, "king"=>1, "david"=>1, "son"=>1, "solomon"=>1, "proverbs"=>1}
 
-two:
+one_two:
   chapter_num: 1
+  verse_num: 2
+  word_num: {"for"=>2, "of"=>1, "words"=>1, "understanding"=>1, "discipline;"=>1, "and"=>1, "wisdom"=>1, "attaining"=>1, "insight;"=>1}
+	verse_num_sw: {"insight"=>1, "words"=>1, "understanding"=>1, "discipline"=>1, "wisdom"=>1, "attaining"=>1}
+
+one_three:
+  chapter_num: 1
+  verse_num: 3
+  word_num: {"and"=>3, "just"=>1, "right"=>1, "is"=>1, "what"=>1, "doing"=>1, "life,"=>1, "prudent"=>1, "for"=>1, "disciplined"=>1, "a"=>1, "acquiring"=>1, "fair;"=>1}
+	verse_num_sw: {"acquiring"=>1, "just"=>1, "right"=>1, "doing"=>1, "life"=>1, "prudent"=>1, "disciplined"=>1, "fair"=>1}
+
+one_four:
+  chapter_num: 1
+  verse_num: 4
+  word_num: {"the"=>2, "to"=>2, "and"=>1, "knowledge"=>1, "simple,"=>1, "for"=>1, "discretion"=>1, "prudence"=>1, "giving"=>1, "young--"=>1}
+	verse_num_sw: {"young"=>1, "discretion"=>1, "knowledge"=>1, "simple"=>1, "prudence"=>1, "giving"=>1}
+
+two_one:
+  chapter_num: 2
   verse_num: 1
-  word_num: MyText
+  word_num: {"my"=>2, "within"=>1, "commands"=>1, "up"=>1, "store"=>1, "and"=>1, "words"=>1, "My"=>1, "accept"=>1, "you"=>1, "if"=>1, "son,"=>1, "you,"=>1}
+	verse_num_sw: {"my"=>3, "within"=>1, "commands"=>1, "store"=>1, "words"=>1, "accept"=>1, "son"=>1, "you"=>1}
+
+two_two:
+  chapter_num: 2
+  verse_num: 2
+  word_num: {"to"=>2, "your"=>2, "applying"=>1, "and"=>1, "wisdom"=>1, "ear"=>1, "turning"=>1, "heart"=>1, "understanding,"=>1}
+	verse_num_sw: {"understanding"=>1, "heart"=>1, "applying"=>1, "wisdom"=>1, "ear"=>1, "turning"=>1}
+
+two_three:
+  chapter_num: 2
+  verse_num: 3
+  word_num: {"and"=>2, "for"=>2, "aloud"=>1, "insight"=>1, "if"=>1, "out"=>1, "call"=>1, "you"=>1, "understanding,"=>1, "cry"=>1}
+	verse_num_sw: {"understanding"=>1, "aloud"=>1, "cry"=>1, "insight"=>1, "call"=>1}
+

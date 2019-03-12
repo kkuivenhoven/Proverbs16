@@ -1,11 +1,38 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+one_one:
   chapter: 1
   verse_num: 1
-  verse_text: MyString
+  verse_text: "The proverbs of Solomon son of David, king of Israel:"
 
-two:
+one_two:
   chapter: 1
+  verse_num: 2
+  verse_text: "for attaining wisdom and discipline; for understanding words of insight;"
+
+one_three:
+  chapter: 1
+  verse_num: 3
+  verse_text: "for acquiring a disciplined and prudent life, doing what is right and just and fair;"
+
+one_four:
+  chapter: 1
+  verse_num: 4
+  verse_text: "for giving prudence to the simple, knowledge and discretion to the young--" 
+
+two_one:
+  chapter: 2
   verse_num: 1
-  verse_text: MyString
+  verse_text: "My son, if you accept my words and store up my commands within you," 
+
+two_two:
+  chapter: 2
+  verse_num: 2
+  verse_text: "turning your ear to wisdom and applying your heart to understanding," 
+
+two_three:
+  chapter: 2
+  verse_num: 3
+  verse_text: "and if you call out for insight and cry aloud for understanding," 
+
+
