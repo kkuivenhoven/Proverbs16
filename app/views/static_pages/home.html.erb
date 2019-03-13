@@ -37,41 +37,12 @@
 	<div id='wordChart'></div>
 </center>
 
-<% cw = CommonWord.all %>
-<% chapters = [1, 2, 3, 4] %>
-<% @common_sw = CommonWord.all.pluck(:verse_num_sw) %>
-<% @all = Hash.new %>
-<% @common_sw.each do |cw| %>
-	<% cw.each do |k, v| %>
-		<% if @all[k].nil? %>
-			<% @all[k] = v %>
-		<% else %>
-			<% @all[k] += v %>
-		<% end %>
-	<% end %>
-<% end %>
-
-<% @ary = Array.new %>
-<% @stuff = "" %>
-<% @all.each do |k,v| %>
-<% i = 0 %>
-<% loop do %>
-	<% if i == v %>
-		<% break %>
-	<% end %>
-	<% @stuff << k %>
-	<% @stuff << " " %>
-	<% i += 1 %>
-<% end %>
-<% end %>
-<% @ary << @stuff %>
-
 
 <html>
   <head>
     <script type="text/javascript">
 
-				var laText = '<%= @ary %>'.replace(/&#39;/g, "'");
+				var laText = '<%= @wordRecurCount %>'.replace(/&#39;/g, "'");
 
 				var myConfig = {
 					type: 'wordcloud',
@@ -106,17 +77,8 @@
 								textAlpha: 1
 							}
 						}
-					},
-					
-					source: {
-						text: '',
-						//Source: https://obamawhitehouse.archives.gov/the-press-office/2015/03/07/remarks-president-50th-anniversary-selma-montgomery-marches
-						fontColor: '#64B5F6',
-						fontSize: 10,
-						fontFamily: 'Georgia',
-						fontWeight: 'normal',
-						marginBottom: '10%'
 					}
+					
 				};
 
 				zingchart.render({ 

@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 	def instantiate_global_vars
 		@chapters = Chart.pluck(:chapter) 
 		@sw = StopWord.all.pluck(:word)
+		@titleName = (params[:chapNum].nil? ? "Proverbs" : "Proverbs " + params[:chapNum].to_s)
 	end
 
 end

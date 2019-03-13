@@ -8,15 +8,20 @@ class NivBibleController < ApplicationController
 
   def proverbs
 		@proverbs = Proverb.where("chapter = #{params[:chapNum]}").all.pluck(:verse_text)
-		@chapNum = "?chapNum=" + params[:chapNum]
-		if params[:commit]
-			@params = params[:searched_word].singularize
-		end
+
 		@common = CommonWord.where("chapter_num = #{params[:chapNum]}").all
 		@common_sw = CommonWord.where("chapter_num = #{params[:chapNum]}").all.pluck(:verse_num_sw)
 		@newHash = CommonWord.getCommonCount(@common_sw)
 		@bwp = Chart.getBwp(params[:chapNum].to_i)
+
+		@joinedVerses = Proverb.joinVerses(@proverbs)
+
+		@chapNum = "?chapNum=" + params[:chapNum]
 		@numChap = params[:chapNum]
+
+		if params[:commit]
+			@params = params[:searched_word].singularize
+		end
   end
 
 	private

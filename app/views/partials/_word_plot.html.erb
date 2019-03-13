@@ -1,79 +1,16 @@
-<html>
-  <head>
-    <script src= "https://cdn.zingchart.com/zingchart.min.js"></script>
-    <script> zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
-    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9","ee6b7db5b51705a13dc2339db3edaf6d"];</script>  <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
-</html>
-    <div id='wordChart'></div>
+<!-- 
+		 Partial page for Word Cloud per chapter.
+		 Associated Javascript getWordChartConfig() method is 
+		 located at app/assets/javascripts/charts/word_cloud.js 
+-->
 
-<style>
-html {
-  height:100%;
-  width:100%;
-  margin:0;
-  padding:0;
-}
-#wordChart {
-  height:100%;
-  width:100%;
-  min-height:150px;
-}
-.zc-ref {
-  display:none;
-}
-</style>
-
-<% @total = Array.new %>
-<% proverb.each do |prov| %>
-	<% @total.push(prov) %>
-<% end %>
-
-<% @newT =  @total.join(" ") %>
+<div id='chapterWordChart'></div>
 
 <script>
-
-	var recWords = '<%= @newT %>'.replace(/&#39;/g, "'");
-	var stopWords = '<%= @sw %>'.replace(/&quot;/g, "");
-
-	var myConfig = {
-		type: 'wordcloud',
-		options: {
-			text: recWords,
-			minLength: 5,
-			ignore: stopWords,
-			maxItems: 40,
-			aspect: 'flow-center',
-			rotate: true,
-			colorType: 'palette',
-			palette: ['#4abdac', '#fc4a1a', '#f78733', '#fc4a1a', '#cc0950'],
-			title: 'hello',
-			style: {
-				fontFamily: 'Crete Round',
-				hoverState: {
-					backgroundColor: '#D32F2F',
-					borderRadius: 2,
-					fontColor: 'white'
-				},
-				tooltip: {
-					text: '%text: %hits',
-					visible: true,
-					alpha: 0.9,
-					backgroundColor: '#1976D2',
-					borderRadius: 2,
-					borderColor: 'none',
-					fontColor: 'white',
-					fontFamily: 'Georgia',
-					textAlpha: 1
-				}
-			}
-		}
-	};
-
-	zingchart.render({ 
-		id: 'wordChart', 
-		data: myConfig, 
-		height: 400, 
-		width: '100%' 
-	});
-
+  zingchart.render({ 
+    id: 'chapterWordChart', 
+    data: getWordChartConfig('<%= @joinedVerses %>', '<%= @sw %>'), 
+    height: 150, 
+    width: '100%' 
+  });
 </script>
