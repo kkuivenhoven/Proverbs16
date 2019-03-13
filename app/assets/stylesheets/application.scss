@@ -4,8 +4,14 @@
  */
 
 @import 'bootstrap';
+@import 'color_variables';
+@import 'general_fonts';
+
 @import 'navbar';
 @import 'jumbotron';
-@import 'font_styling';
+
+@import 'verses_partial';
+@import 'insight_div';
+
 @import 'charts_api';
 

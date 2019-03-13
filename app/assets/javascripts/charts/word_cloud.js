@@ -21,6 +21,7 @@ function getWordChartConfig(joinedVerses, wordsToStop){
       aspect: 'flow-center',
       rotate: true,
       colorType: 'palette',
+      // palette: ['#4abdac', '#fc4a1a', '#f78733', '#fc4a1a', '#cc0950', '#4a95bd', '#fcbb1a'],
       palette: ['#4abdac', '#fc4a1a', '#f78733', '#fc4a1a', '#cc0950'],
       style: {
         fontFamily: 'Crete Round',

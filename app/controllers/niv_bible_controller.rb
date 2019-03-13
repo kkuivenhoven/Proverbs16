@@ -21,6 +21,11 @@ class NivBibleController < ApplicationController
 
 		if params[:commit]
 			@params = params[:searched_word].singularize
+			@introAndVerify = Array.new
+			insightIntro = "<br><h4>Recurrence count, definitions, and a statistics observation:</h4><br>".html_safe
+			phraseVerify = "<p-small class='general-p'>You searched for the word <b>#{params[:searched_word]}</b>.</p-small><br><br>".html_safe
+			@introAndVerify << insightIntro
+			@introAndVerify << phraseVerify
 		end
   end
 

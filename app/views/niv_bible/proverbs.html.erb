@@ -1,17 +1,47 @@
 <% provide(:title, "#{params[:chapNum]}") %>
-<% provide(:p, "#{ render partial: 'partials/search_box', locals: { path: niv_bible_proverbs_path  }}".html_safe) %>
+<% provide(:p, "#{ render partial: 'partials/search_box', locals: { path: niv_bible_proverbs_path, jumbotron: true }}".html_safe) %>
 
 
 <%= render partial: 'partials/word_plot', locals: { proverb: @proverbs } %>
 
 
-<div class="row">
+<div class="row chapter-div">
 
-	<%= render partial: 'partials/index_partial', locals: { proverb: @proverbs } %>
+	
+	<% if !@wordSearched %>
+		<div class="col-md-8">
+			<%= render partial: 'partials/chapter_text', locals: { proverb: @proverbs } %>
+		</div>
+	<% else %>
+		<div class="col-md-6">
+			<%= render partial: 'partials/chapter_text', locals: { proverb: @proverbs } %>
+		</div>
+	<% end %>
 
-	<% if params[:commit] %>
-		<div class="col-sm">
-			<%= render partial: 'partials/html_mapping', locals: { chapter_num: @common, key_values: @key_values, client: @client, bwp: @bwp  } %>
+	<% if !@wordSearched %>
+		<div class="col-md-4 verses-no-search" id="searched-word-nil-div" style="text-align: right;">
+			<p id="searched-word-nil">
+
+				<% i = 0 %>
+				<% @noWordSearched.each do |nws| %>
+					<% if nws != "true" %>
+						<!--span id="verbiage-%= i %>">%= nws %></span><br-->
+						<%= nws %>
+					<% elsif nws == "true" %>
+							<%= render partial: 'partials/search_box', locals: { path: niv_bible_proverbs_path, jumbotron: false } %><br>
+					<% end %>	
+					<% i += 1 %>
+				<% end %>	
+
+			</p>
+		</div>
+
+	<% elsif @wordSearched %>
+
+		<div class="col-md-6 verses-yes-search">
+
+				<%= render partial: 'partials/html_mapping', locals: { chapter_num: @common, key_values: @key_values, client: @client, bwp: @bwp  } %>
+
 		</div>
 	<% end %>
 

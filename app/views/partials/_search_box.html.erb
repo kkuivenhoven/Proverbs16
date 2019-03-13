@@ -1,9 +1,27 @@
 <%= form_tag(@path_way, method: :get) do %>
-  <%= text_field_tag :searched_word, "Delete me! Search for a word from Proverbs #{@numChap} to learn more!",
-			style: 'width: 47%; color: #f78062; text-align: center; border-radius: 5px;' %>
+
+	<% if !@wordSearched %>
+		<% if jumbotron == true %>
+					<%= text_field_tag :searched_word, "Search/type a word from Proverbs #{@numChap} to learn more!", 
+						 :class => 'ysw-search-box search-box' %>
+
+		<% elsif jumbotron == false %>
+					<%= text_field_tag :searched_word, nil,
+						 :placeholder => 'Search/type in a word!',	
+						 :class => 'nsw-search-box search-box',
+						 :onclick => "ClearText('#fc4a1a')"	%>
+		<% end %>
+	<% elsif @wordSearched %>
+					<%= text_field_tag :searched_word, "Search/type in a word from Proverbs #{@numChap} to learn more!", 
+							 :class => 'ysw-search-box search-box' %>
+	<% end %>
+
 	<%= hidden_field_tag 'chapNum', @numChap %>
-	<br><br>
-  <%= submit_tag "Search #{params[:action].capitalize} #{@numChap}", :class => "btn btn-xs btn-light" %>
+	<% if !@wordSearched %>
+		<%= submit_tag "Search", :class => "btn btn-xs btn-light btn-nsw" %>
+	<% elsif @wordSearched %>
+		<br><br>
+		<%= submit_tag "Search #{params[:action].capitalize} #{@numChap}", :class => "btn btn-xs btn-light" %>
+	<% end %>
+
 <% end %>
-
-

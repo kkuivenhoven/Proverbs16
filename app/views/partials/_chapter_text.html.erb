@@ -1,7 +1,12 @@
+<!-- 
+		Partial for printing out chapters' verses, verse by verse.
+		If a word is searched and is found in a verse, the searched word
+		is bolded and printed in place or original word.
+-->
 
-<div class="col-sm">
-	<br><h3>NIV translation of Proverbs, chapter <%= @numChap %>:</h3>
-	<p>
+	<%= @versesIntro %>
+
+	<p id="p-verses">
 		<% proverb.each do |prov| %>
 
 			<% if !@params.nil? %>
@@ -26,7 +31,8 @@
 
 
 		<% end %>
-	<br><small>APA Citation: Zondervan, (1995) <i>The NIV Study Bible.</i> Grand Rapids, Michigan: Zondervan<br></small>
+
+	<%= @apaCitation %>
+
 	</p>
-</div>
 

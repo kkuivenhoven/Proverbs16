@@ -1,0 +1,61 @@
+/** 
+	* This stylesheet contains styles for the 
+	* chapter_text and search_box partials.
+	*/
+
+
+/* general search box styling */
+.search-box {
+	text-align: center;
+	border-radius: 5px;
+}
+
+
+/* no searched word search box */
+.nsw-search-box {
+	color: $teal;
+	// width: 45%;
+}
+
+.btn-nsw {
+	color: $dark-faded-gray-opacity40;
+}
+
+.nsw-search-box::placeholder {
+	color: $teal-opacity70;
+	text-align: center;
+}
+.nsw-search-box:-ms-input-placeholder { /* Internet Explorer 10-11 */
+	color: $teal-opacity70;
+	text-align: center;
+}
+.nsw-search-box::-ms-input-placeholder { /* Microsoft Edge */
+	color: $teal-opacity70;
+	text-align: center;
+}
+
+
+/* yes, searched word search box */
+.ysw-search-box {
+	color: $red-orange-light;
+	width: 47%;
+}
+.ysw-search-box::placeholder {
+  color: $red-orange-light;
+}
+.ysw-search-box:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: $red-orange-light;
+}
+.ysw-search-box::-ms-input-placeholder { /* Microsoft Edge */
+ color: $red-orange-light;
+}
+
+
+#quartile-verbiage {
+	text-align: center;
+	width: 450px;
+	margin: 0px;
+	padding: 0px;
+}
+
+

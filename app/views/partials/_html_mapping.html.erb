@@ -1,11 +1,10 @@
-<center>
 <% @newHash.each do |key, value| %>
 	<% if key.downcase.singularize == params[:searched_word].downcase.singularize %>
 		<% if (key == "israel") or (key == "david") or (key == "solomon")%>
-			<h4>Recurrence count, definitions, and a statistics observation:</h4><br>
+			<%= @introAndVerify[0] %> <%= @introAndVerify[1] %>
 			The word <b><%= key.capitalize %></b> occurs <%= value %> times in Proverbs <%= @common.first.chapter_num %>.<br>
 		<% else %>
-			<h4>Recurrence count, definitions, and a statistics observation:</h4><br>
+			<%= @introAndVerify[0] %> <%= @introAndVerify[1] %>
 			The word <b><%= key %></b> occurs <%= value %> times in Proverbs <%= @common.first.chapter_num %>.<br>
 		<% end %>
 		<% @hash = @newHash.group_by(&:first).map { |k, v| [k, v.map(&:last)] }.to_h %>
@@ -63,24 +62,58 @@
 
 				<%= render partial: 'partials/bwp_chart', locals: { bwp: bwp, ch: @common.first.chapter_num } %>
 
-				<p id="quartile-verbiage">
-					<% if keyIndice.between?(bwp.least_indice, bwp.first_quartile_indice) %>
-						The word <b><%= params[:searched_word] %></b> occurs within the first quartile 
-						of word recurrences within Proverbs <%= @common.first.chapter_num %>.
-					<% elsif keyIndice.between?(bwp.first_quartile_indice, bwp.median) %>
-						The word <b><%= params[:searched_word] %></b> occurs within the second quartile 
-						of word recurrences within Proverbs <%= @common.first.chapter_num %>.
-					<% elsif keyIndice.between?(bwp.median, bwp.third_quartile_indice) %>
-						The word <b><%= params[:searched_word] %></b> occurs within the third quartile 
-						of word recurrences within Proverbs <%= @common.first.chapter_num %>.
-					<% elsif keyIndice.between?(bwp.third_quartile_indice, bwp.greatest_indice) %>
-						The word <b><%= params[:searched_word] %></b> occurs within the fourth quartile 
-						of word recurrences within Proverbs <%= @common.first.chapter_num %>.
-					<% end %>
-				</p>
+				<center>
+					<p id="quartile-verbiage">
+						<% if keyIndice.between?(bwp.least_indice, bwp.first_quartile_indice) %>
+							The word <b><%= params[:searched_word] %></b> occurs within the first quartile 
+							of word recurrences in Proverbs <%= @common.first.chapter_num %>. 
+
+							<br><br>
+							This also means that repetition count of <%= params[:searched_word] %> is 
+							considered an <i>outlier</i>. Moreover the repetition count is lower 
+							than 75% of the recurrence (or repetition) count of other words in this chapter of Proverbs.
+
+							<br><br>
+							In other words, this means that the word <%= params[:searched_word] %> occurs less 
+							than other words in chapter <%= @common.first.chapter_num %> of Proverbs.
+
+						<% elsif keyIndice.between?(bwp.first_quartile_indice, bwp.median) %>
+							The word <b><%= params[:searched_word] %></b> occurs within the second quartile 
+							of word recurrences in Proverbs <%= @common.first.chapter_num %>.
+							<br><br>
+							Since it lies in the second quartile, this means that the repetition count of 
+							<%= params[:searched_word] %> lies in the <i>inner quartile range</i>. 
+							This just means that the recurrence count of <%= params[:searched_word] %> is 
+							lower than 50% of the recurrence (or repetition) count of other words in this chapter of Proverbs.
+
+						<% elsif keyIndice.between?(bwp.median, bwp.third_quartile_indice) %>
+							The word <b><%= params[:searched_word] %></b> occurs within the third quartile 
+							of word recurrences in Proverbs <%= @common.first.chapter_num %>.
+
+							<br><br>
+							Since it lies in the third quartile, this means that the repetition count of 
+							<%= params[:searched_word] %> lies in the <i>inner quartile range</i>. 
+							This just means that the recurrence count of <%= params[:searched_word] %> is 
+							higher than 50% of the recurrence (or repetition) count of other words in this chapter of Proverbs.
+
+						<% elsif keyIndice.between?(bwp.third_quartile_indice, bwp.greatest_indice) %>
+							The word <b><%= params[:searched_word] %></b> occurs within the fourth quartile 
+							of word recurrences in Proverbs <%= @common.first.chapter_num %>.
+
+							<br><br>
+							This also means that repetition count of <%= params[:searched_word] %> is 
+							considered an <i>outlier</i>. Moreover the repetition count is higher 
+							than 75% of the recurrence (or repetition) count of other words in this chapter of Proverbs.
+							<br><br>
+
+							In other words, this means that the word <%= params[:searched_word] %> occurs more 
+							than other words in chapter <%= @common.first.chapter_num %> of Proverbs.
+
+						<% end %>
+					</p>
+				</center>
 
 			<% end %>
 		<% end %>
 	<% end %>
 <% end %>
-</center>

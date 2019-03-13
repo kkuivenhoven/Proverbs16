@@ -1,0 +1,43 @@
+/** 
+	* This styling file pertains to the partial that prints out 
+	* the Bible chapter verses.
+	*/
+
+.chapter-div {
+	height: auto;
+	width: 100%;
+}
+
+.verses-no-search {
+	text-align: center;
+}
+
+.verses-yes-search {
+	text-align: center;
+}
+
+#p-verses {
+	font-size: 18px;
+}
+
+#searched-word-nil-div {
+	#searched-word-nil {
+		text-align: left !important;
+		padding-top: 100px;
+	  color: $dark-faded-gray;
+		#verbiage-1 {
+			color: $dark-faded-gray-opacity80;
+			font-size: 18px;
+		}
+		#verbiage-2 {
+			color: $dark-faded-gray;
+			font-size: 14px;
+		}
+		#verbiage-3 {
+			color: $dark-faded-gray-opacity80;
+			font-size: 12px;
+		}
+	}
+}
+
+

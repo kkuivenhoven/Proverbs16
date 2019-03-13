@@ -1,0 +1,43 @@
+/** 
+	* This stylesheet contains general font styling classes 
+	* and do not pertain to any particular view.
+	*/
+
+.min-p-width {
+	max-width: 750px;
+}
+
+.general-p {
+	text-align: center;
+}
+
+#nswMainHdr {
+	color: $dark-faded-gray-opacity40;
+	.nswMainHdrLeft {
+		text-align: left;
+		padding-bottom: 10px;
+	}
+}
+
+#nswInfoDiv {
+	color: $dark-faded-gray-opacity40;
+	padding-top: 10px;
+	p {
+		padding: 0px;
+		margin: 0px;
+	}
+	.nswInfoHdr1 {
+		padding-bottom: 10px;
+		text-align: left;
+	}
+	.nswInfoHdr2 {
+		padding-top: 0px;
+		text-align: left;
+	}
+	.nswInfoLeft {
+		text-align: left;
+	}
+	.nswInfoRight {
+		float: right;
+	}
+}

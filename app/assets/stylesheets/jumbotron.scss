@@ -1,9 +1,17 @@
+/** 
+	* This stylesheet contains styles for the 
+	* jumbotron banner which lives at the application layer.
+	*/
+
 
 .jumbotron {
 	text-align: center;
-	background-color: #4abdac;
-	h2 {
-		// color: red;
+	background-color: $teal;
+	.jumbotron-yield-p {
+		font-size: 12px;
+	}
+	.jumbotron-p {
+		font-size: 12px;
 	}
 }
 
