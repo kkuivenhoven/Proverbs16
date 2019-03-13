@@ -10,7 +10,8 @@
 		<% @hash = @newHash.group_by(&:first).map { |k, v| [k, v.map(&:last)] }.to_h %>
 		<% keyIndice = @hash.find_index{ |k,_| k == key } %>
 		<% key_values.each do |keyy, valuee| %>
-			<% if keyy.downcase.singularize == params[:searched_word].downcase.singularize %>
+			<!--% if keyy.downcase.singularize == params[:searched_word].downcase.singularize %-->
+			<% if keyy.downcase == params[:searched_word].downcase %>
 				<% if (keyy == "israel") or (keyy == "david") or (keyy == "solomon")%>
 						The word <b><%= keyy.capitalize %></b> occurs <%= valuee %> times in the book of Proverbs.<br><br>
 				<% else %>
