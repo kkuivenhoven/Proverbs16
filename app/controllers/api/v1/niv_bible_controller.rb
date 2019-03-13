@@ -8,14 +8,14 @@ class Api::V1::NivBibleController < ApplicationController
 			@common_sw = CommonWord.where("chapter_num = #{params[:chapNum]}").all.pluck(:verse_num_sw)
 			@ch_common_sw = CommonWord.getCommonCount(@common_sw)
 			@verses["verses"] = @proverbs
-			@verses["stop_worded_verses"] = @common_sw
+			@verses["stop_worded_verses"] = @ch_common_sw
 			@chapter[params[:chapNum]] = @verses
 		else
 			@proverbs = Proverb.where("chapter = '1'").all.pluck(:verse_num, :verse_text).to_h
 			@common_sw = CommonWord.where("chapter_num = '1'").all.pluck(:verse_num_sw)
 			@ch_common_sw = CommonWord.getCommonCount(@common_sw)
 			@verses["verses"] = @proverbs
-			@verses["stop_worded_verses"] = @common_sw
+			@verses["stop_worded_verses"] = @ch_common_sw
 			@chapter[1] = @verses
 		end
 		render json: @chapter
