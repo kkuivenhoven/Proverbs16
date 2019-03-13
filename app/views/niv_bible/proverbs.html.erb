@@ -1,0 +1,18 @@
+<% provide(:title, "#{params[:chapNum]}") %>
+<% provide(:p, "#{ render partial: 'partials/search_box', locals: { path: niv_bible_proverbs_path  }}".html_safe) %>
+
+
+<%= render partial: 'partials/word_plot', locals: { proverb: @proverbs } %>
+
+
+<div class="row">
+
+	<%= render partial: 'partials/index_partial', locals: { proverb: @proverbs } %>
+
+	<% if params[:commit] %>
+		<div class="col-sm">
+			<%= render partial: 'partials/html_mapping', locals: { chapter_num: @common, key_values: @key_values, client: @client, bwp: @bwp  } %>
+		</div>
+	<% end %>
+
+</div>

@@ -1,8 +1,9 @@
-
-<p>Search for a word to be highlighted, for statistical information and definition:</p>
-<%= form_tag(path, method: :get) do %>
-  <%= text_field_tag :proverb, "Search for a word", style: 'color: #f78062;' %>
-  <%= submit_tag 'Search', :class => "btn btn-xs btn-light" %>
+<%= form_tag(@path_way, method: :get) do %>
+  <%= text_field_tag :searched_word, "Delete me! Search for a word from Proverbs #{@numChap} to learn more!",
+			style: 'width: 47%; color: #f78062; text-align: center; border-radius: 5px;' %>
+	<%= hidden_field_tag 'chapNum', @numChap %>
+	<br><br>
+  <%= submit_tag "Search #{params[:action].capitalize} #{@numChap}", :class => "btn btn-xs btn-light" %>
 <% end %>
 
 

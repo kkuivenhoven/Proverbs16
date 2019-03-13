@@ -1,163 +1,135 @@
 <% provide(:title, "Home") %>
+<% provide(:p, "Welcome to the bookofproverbs.herokuapp.com web app!
+<br>Here, users are able to search for particular recurring words in the book of Proverbs from the NIV Study Bible, 10th Anniversary Edition, copyright 1995 by Zondervan. Upon searching for words, users will also learn statistical information about that particular word as well as the Pearson Dictionary definition and the Oxford Dictionary definition of the word.<br>
+<br>Bible citation: Zondervan, (1995) <i>The NIV Study Bible.</i> Grand Rapids, Michigan: Zondervan<br>
+<br>This web app was developed by Kendra Kuivenhoven.
+".html_safe) %>
 
 <html>
   <head>
     <script src= "https://cdn.zingchart.com/zingchart.min.js"></script>
-    <script> zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
-    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9","ee6b7db5b51705a13dc2339db3edaf6d"];</script>  <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <script> 
+			zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    	ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9","ee6b7db5b51705a13dc2339db3edaf6d"];
+		</script>  
+		<link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+		<style>
+			html {
+				height:100%;
+				width:100%;
+				margin:0;
+				padding:0;
+			}
+			#wordChart {
+				height:100%;
+				width:100%;
+				min-height:150px;
+			}
+			.zc-ref {
+				display:none;
+			}
+		</style>
+	</head>
 </html>
 
-<style>
-html {
-  height:100%;
-  width:100%;
-  margin:0;
-  padding:0;
-}
-#wordChart {
-  height:100%;
-  width:100%;
-  min-height:150px;
-}
-.zc-ref {
-  display:none;
-}
-</style>
 
-<% @sw = StopWord.all.pluck(:word) %>
+<center>
+	<div id='wordChart'></div>
+</center>
 
-<div class="container">
-	<div class="row">
-		<!--div class="col-sm">
-		</div>
-		<div class="col-sm"-->
-			<center>
-				<p>
-					Welcome to the bookofproverbs.herokuapp.com. Here, users are able to search for particular recurring words in the book of Proverbs from the NIV Study Bible, 10th Anniversary Edition, copyright 1995 by Zondervan. Upon searching for words, users will also learn statistical information about that particular word as well as the Pearson Dictionary definition and the Oxford Dictionary definition of the word.
-				<br><br>Developed by: Kendra Kuivenhoven
-				
-				<br>APA Citation: Zondervan, (1995) <i>The NIV Study Bible.</i> Grand Rapids, Michigan: Zondervan<br>
-				</p>
-				
-				<% cw = CommonWord.all %>
-				<% chapters = [1, 2, 3, 4] %>
-				<% @common_sw = CommonWord.all.pluck(:verse_num_sw) %>
-				<% @all = Hash.new %>
-				<% @common_sw.each do |cw| %>
-					<% cw.each do |k, v| %>
-						<% if @all[k].nil? %>
-							<% @all[k] = v %>
-						<% else %>
-							<% @all[k] += v %>
-						<% end %>
-					<% end %>
-				<% end %>
+<% cw = CommonWord.all %>
+<% chapters = [1, 2, 3, 4] %>
+<% @common_sw = CommonWord.all.pluck(:verse_num_sw) %>
+<% @all = Hash.new %>
+<% @common_sw.each do |cw| %>
+	<% cw.each do |k, v| %>
+		<% if @all[k].nil? %>
+			<% @all[k] = v %>
+		<% else %>
+			<% @all[k] += v %>
+		<% end %>
+	<% end %>
+<% end %>
 
-			<div id='wordChart'></div>
+<% @ary = Array.new %>
+<% @stuff = "" %>
+<% @all.each do |k,v| %>
+<% i = 0 %>
+<% loop do %>
+	<% if i == v %>
+		<% break %>
+	<% end %>
+	<% @stuff << k %>
+	<% @stuff << " " %>
+	<% i += 1 %>
+<% end %>
+<% end %>
+<% @ary << @stuff %>
 
-			<% @ary = Array.new %>
-			<% @stuff = "" %>
-			<% @all.each do |k,v| %>
-				<% i = 0 %>
-				<% loop do %>
-					<% if i == v %>
-						<% break %>
-					<% end %>
-					<% @stuff << k %>
-					<% @stuff << " " %>
-					<% i += 1 %>
-				<% end %>
-			<% end %>
-			<% @ary << @stuff %>
-
-			<% @stuff %><br><br><br>
-			<% @all.class %><br><br>
-			<% @all %><br>
-			
-
-			</center>
-		<!--/div>
-		<div class="col-sm">
-		</div-->
-	</div>
-</div>
 
 <html>
   <head>
-    <!--script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script-->
     <script type="text/javascript">
 
-	var laText = '<%= @ary %>'.replace(/&#39;/g, "'");
+				var laText = '<%= @ary %>'.replace(/&#39;/g, "'");
 
-  var myConfig = {
-    type: 'wordcloud',
-    options: {
-      text: laText,
-      minLength: 5,
-      ignore: '<%= @sw %>',
-      maxItems: 100,
-      aspect: 'flow-center',
-      rotate: true,
-      colorType: 'palette',
-      // palette: ['#D32F2F','#5D4037','#1976D2','#E53935','#6D4C41','#1E88E5','#F44336','#795548','#2196F3','#EF5350','#8D6E63','#42A5F5'],
-			palette: ['#4abdac', '#fc4a1a', '#f78733', 'fc4a1a', '#cc0950'],
-      
-      style: {
-        fontFamily: 'Crete Round',
-        
-        hoverState: {
-          backgroundColor: '#D32F2F',
-          borderRadius: 2,
-          fontColor: 'white'
-        },
-        tooltip: {
-          text: '%text: %hits',
-          visible: true,
-          
-          alpha: 0.9,
-          backgroundColor: '#1976D2',
-          borderRadius: 2,
-          borderColor: 'none',
-          fontColor: 'white',
-          fontFamily: 'Georgia',
-          textAlpha: 1
-        }
-      }
-    },
-    
-    source: {
-      text: '',
-      //Source: https://obamawhitehouse.archives.gov/the-press-office/2015/03/07/remarks-president-50th-anniversary-selma-montgomery-marches
-      fontColor: '#64B5F6',
-      fontSize: 10,
-      fontFamily: 'Georgia',
-      fontWeight: 'normal',
-      marginBottom: '10%'
-    }
-  };
+				var myConfig = {
+					type: 'wordcloud',
+					options: {
+						text: laText,
+						minLength: 5,
+						ignore: '<%= @sw %>',
+						maxItems: 100,
+						aspect: 'flow-center',
+						rotate: true,
+						colorType: 'palette',
+						palette: ['#4abdac', '#fc4a1a', '#f78733', 'fc4a1a', '#cc0950'],
+						
+						style: {
+							fontFamily: 'Crete Round',
+							
+							hoverState: {
+								backgroundColor: '#D32F2F',
+								borderRadius: 2,
+								fontColor: 'white'
+							},
+							tooltip: {
+								text: '%text: %hits',
+								visible: true,
+								
+								alpha: 0.9,
+								backgroundColor: '#1976D2',
+								borderRadius: 2,
+								borderColor: 'none',
+								fontColor: 'white',
+								fontFamily: 'Georgia',
+								textAlpha: 1
+							}
+						}
+					},
+					
+					source: {
+						text: '',
+						//Source: https://obamawhitehouse.archives.gov/the-press-office/2015/03/07/remarks-president-50th-anniversary-selma-montgomery-marches
+						fontColor: '#64B5F6',
+						fontSize: 10,
+						fontFamily: 'Georgia',
+						fontWeight: 'normal',
+						marginBottom: '10%'
+					}
+				};
 
-  zingchart.render({ 
-    id: 'wordChart', 
-    data: myConfig, 
-    height: 400, 
-    width: '100%' 
-  });
-
-
-
-
-
+				zingchart.render({ 
+					id: 'wordChart', 
+					data: myConfig, 
+					height: 400, 
+					width: '100%' 
+				});
 
     </script>
   </head>
-  <!--body>
-    <div id="wordtree_basic" style="width: 900px; height: 500px;"></div>
-  </body-->
 </html>
 
-<!--% @proverbs16.each do |prov| %>
-	%= prov %><br>
- end %-->
 
 
 

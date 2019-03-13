@@ -23,8 +23,6 @@ html {
 }
 </style>
 
-<% @sw = StopWord.all.pluck(:word) %>
-
 <% @total = Array.new %>
 <% proverb.each do |prov| %>
 	<% @total.push(prov) %>
@@ -34,25 +32,23 @@ html {
 
 <script>
 
-	var laText = '<%= @newT %>'.replace(/&#39;/g, "'");
-	console.log("laText: " + laText);
+	var recWords = '<%= @newT %>'.replace(/&#39;/g, "'");
+	var stopWords = '<%= @sw %>'.replace(/&quot;/g, "");
 
 	var myConfig = {
 		type: 'wordcloud',
 		options: {
-			text: laText,
+			text: recWords,
 			minLength: 5,
-			ignore: '<%= @sw %>',
+			ignore: stopWords,
 			maxItems: 40,
 			aspect: 'flow-center',
 			rotate: true,
 			colorType: 'palette',
-			// palette: ['#D32F2F','#5D4037','#1976D2','#E53935','#6D4C41','#1E88E5','#F44336','#795548','#2196F3','#EF5350','#8D6E63','#42A5F5'],
 			palette: ['#4abdac', '#fc4a1a', '#f78733', '#fc4a1a', '#cc0950'],
-			
+			title: 'hello',
 			style: {
 				fontFamily: 'Crete Round',
-				
 				hoverState: {
 					backgroundColor: '#D32F2F',
 					borderRadius: 2,
@@ -61,7 +57,6 @@ html {
 				tooltip: {
 					text: '%text: %hits',
 					visible: true,
-					
 					alpha: 0.9,
 					backgroundColor: '#1976D2',
 					borderRadius: 2,
@@ -71,16 +66,6 @@ html {
 					textAlpha: 1
 				}
 			}
-		},
-		
-		source: {
-			text: '',
-			//Source: https://obamawhitehouse.archives.gov/the-press-office/2015/03/07/remarks-president-50th-anniversary-selma-montgomery-marches
-			fontColor: '#64B5F6',
-			fontSize: 10,
-			fontFamily: 'Georgia',
-			fontWeight: 'normal',
-			marginBottom: '10%'
 		}
 	};
 

@@ -1,14 +1,17 @@
+<center>
 <% @newHash.each do |key, value| %>
-	<% if key.downcase.singularize == params[:proverb].downcase.singularize %>
+	<% if key.downcase.singularize == params[:searched_word].downcase.singularize %>
 		<% if (key == "israel") or (key == "david") or (key == "solomon")%>
+			<h4>Recurrence count, definitions, and a statistics observation:</h4><br>
 			The word <b><%= key.capitalize %></b> occurs <%= value %> times in Proverbs <%= @common.first.chapter_num %>.<br>
 		<% else %>
+			<h4>Recurrence count, definitions, and a statistics observation:</h4><br>
 			The word <b><%= key %></b> occurs <%= value %> times in Proverbs <%= @common.first.chapter_num %>.<br>
 		<% end %>
 		<% @hash = @newHash.group_by(&:first).map { |k, v| [k, v.map(&:last)] }.to_h %>
 		<% keyIndice = @hash.find_index{ |k,_| k == key } %>
 		<% key_values.each do |keyy, valuee| %>
-			<% if keyy.downcase.singularize == params[:proverb].downcase.singularize %>
+			<% if keyy.downcase.singularize == params[:searched_word].downcase.singularize %>
 				<% if (keyy == "israel") or (keyy == "david") or (keyy == "solomon")%>
 						The word <b><%= keyy.capitalize %></b> occurs <%= valuee %> times in the book of Proverbs.<br><br>
 				<% else %>
@@ -16,11 +19,11 @@
 				<% end %>
 
 				<% begin %>
-					<% p_meanings = DictionaryLookup::Base.define(params[:proverb].singularize) %>
+					<% p_meanings = DictionaryLookup::Base.define(params[:searched_word].singularize) %>
 					<% if p_meanings.length == 1 %>
-						Pearson Dictionary definition of <b><%= params[:proverb] %>:</b><br>
+						Pearson Dictionary definition of <b><%= params[:searched_word] %>:</b><br>
 					<% else %>
-						Pearson Dictionary definitions of <b><%= params[:proverb] %>:</b><br>
+						Pearson Dictionary definitions of <b><%= params[:searched_word] %>:</b><br>
 					<% end %>
 					<% p_meanings.each do |m| %>
 						<% if !m.part_of_speech.nil? %>
@@ -29,22 +32,22 @@
 						&nbsp;&nbsp;&nbsp;&nbsp;• <%= m.denotation %><br>
 					<% end %>
 				<% rescue DictionaryLookup::Error %>
-						No Pearson Dictionary entry available for the word <b><%= params[:proverb] %></b>.<br>
+						No Pearson Dictionary entry available for the word <b><%= params[:searched_word] %></b>.<br>
 				<% end %>
 				
 					<br>
 				<% begin %>
-					<% entry = client.entry(params[:proverb].singularize) %>
+					<% entry = client.entry(params[:searched_word].singularize) %>
 					<% entries = entry.lexical_entries[0].entries %>
 					<% pronun = entry.lexical_entries[0].pronunciations[0][:phonetic_spelling] %>
 					<% @meanings =  entries[0][:senses][0][:definitions] %>
 					<% if @meanings.length == 0 %>
-						No Oxford Dictionary entry available for the word <b><%= params[:proverb] %></b>.
+						No Oxford Dictionary entry available for the word <b><%= params[:searched_word] %></b>.
 					<% else %>
 						<% if @meanings.length == 1 %>
-							Oxford Dictionary definition of <b><%= params[:proverb] %>:</b><br>
+							Oxford Dictionary definition of <b><%= params[:searched_word] %>:</b><br>
 						<% else %>
-							Oxford Dictionary definitions of <b><%= params[:proverb] %>:</b><br>
+							Oxford Dictionary definitions of <b><%= params[:searched_word] %>:</b><br>
 						<% end %>
 						&nbsp;&nbsp;&nbsp;&nbsp;<i><small>pronunciation:</i></small> <%= pronun %><br>
 						<% @meanings.each do |m| %>
@@ -53,24 +56,31 @@
 					<% end %>
 
 				<% rescue OxfordDictionary::Error %>
-					No Oxford Dictionary entry available for the word <b><%= params[:proverb] %></b>.<br>
+					No Oxford Dictionary entry available for the word <b><%= params[:searched_word] %></b>.<br>
 				<% end %>
 
 				<br><br>
 
-				<% if keyIndice.between?(bwp.least_indice, bwp.first_quartile_indice) %>
-					The word <b><%= params[:proverb] %></b> occurs within the first quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
-				<% elsif keyIndice.between?(bwp.first_quartile_indice, bwp.median) %>
-					The word <b><%= params[:proverb] %></b> occurs within the second quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
-				<% elsif keyIndice.between?(bwp.median, bwp.third_quartile_indice) %>
-					The word <b><%= params[:proverb] %></b> occurs within the third quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
-				<% elsif keyIndice.between?(bwp.third_quartile_indice, bwp.greatest_indice) %>
-					The word <b><%= params[:proverb] %></b> occurs within the fourth quartile of word recurrences within Proverbs <%= @common.first.chapter_num %>.
-				<% end %>
-
 				<%= render partial: 'partials/bwp_chart', locals: { bwp: bwp, ch: @common.first.chapter_num } %>
+
+				<p id="quartile-verbiage">
+					<% if keyIndice.between?(bwp.least_indice, bwp.first_quartile_indice) %>
+						The word <b><%= params[:searched_word] %></b> occurs within the first quartile 
+						of word recurrences within Proverbs <%= @common.first.chapter_num %>.
+					<% elsif keyIndice.between?(bwp.first_quartile_indice, bwp.median) %>
+						The word <b><%= params[:searched_word] %></b> occurs within the second quartile 
+						of word recurrences within Proverbs <%= @common.first.chapter_num %>.
+					<% elsif keyIndice.between?(bwp.median, bwp.third_quartile_indice) %>
+						The word <b><%= params[:searched_word] %></b> occurs within the third quartile 
+						of word recurrences within Proverbs <%= @common.first.chapter_num %>.
+					<% elsif keyIndice.between?(bwp.third_quartile_indice, bwp.greatest_indice) %>
+						The word <b><%= params[:searched_word] %></b> occurs within the fourth quartile 
+						of word recurrences within Proverbs <%= @common.first.chapter_num %>.
+					<% end %>
+				</p>
 
 			<% end %>
 		<% end %>
 	<% end %>
 <% end %>
+</center>

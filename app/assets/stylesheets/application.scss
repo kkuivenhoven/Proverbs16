@@ -1,34 +1,10 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
+ * Word Recurrence Ruby on Rails web app manifest file. 
+ * This manifest file will include all files listed below.
  */
+
 @import 'bootstrap';
+@import 'navbar';
+@import 'jumbotron';
+@import 'font_styling';
 
-.navbar {
-  left: 50%;
-  transform: translatex(-50%);
-	display: inline-block;
-	float: none;
-	vertical-align: top;
-	a {
-		color: #fc4a1a;
-		font-weight: bold;
-	}
-}
-
-.jumbotron {
-	text-align: center;
-	background-color: #4abdac;
-	h2 {
-		// color: red;
-	}
-}
