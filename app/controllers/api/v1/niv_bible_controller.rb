@@ -5,7 +5,7 @@ class Api::V1::NivBibleController < ApplicationController
 		if !params[:chapNum].nil?
 			@verses = Hash.new
 			@proverbs = Proverb.where("chapter = #{params[:chapNum]}").all.pluck(:verse_num, :verse_text).to_h
-			@rec_nsw = CommonWord.where("chapter_num = #{params[:chapNum]}").all
+			@rec_nsw = CommonWord.where("chapter_num = #{params[:chapNum]}").all.pluck(:word_num)
 			@common_sw = CommonWord.where("chapter_num = #{params[:chapNum]}").all.pluck(:verse_num_sw)
 			@ch_common_sw = CommonWord.getCommonCount(@common_sw)
 			@verses["verses"] = @proverbs
@@ -17,7 +17,7 @@ class Api::V1::NivBibleController < ApplicationController
 			chapters.each do |c|
 				@verses = Hash.new
 				@proverbs = Proverb.where("chapter = #{c}").all.pluck(:verse_num, :verse_text).to_h
-				@rec_nsw = CommonWord.where("chapter_num = #{params[:chapNum]}").all
+				@rec_nsw = CommonWord.where("chapter_num = #{params[:chapNum]}").all.pluck(:word_num)
 				@common_sw = CommonWord.where("chapter_num = #{c}").all.pluck(:verse_num_sw)
 				@ch_common_sw = CommonWord.getCommonCount(@common_sw)
 				@verses["verses"] = @proverbs
