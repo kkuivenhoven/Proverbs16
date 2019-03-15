@@ -2,7 +2,8 @@
 
 	<% if !@wordSearched %>
 		<% if jumbotron == true %>
-					<%= text_field_tag :searched_word, "Search/type a word from Proverbs #{@numChap} to learn more!", 
+					<%= text_field_tag :searched_word, nil,
+						 :placeholder => "Search/type a word from Proverbs #{@numChap} to learn more!", 
 						 :class => 'ysw-search-box search-box' %>
 
 		<% elsif jumbotron == false %>
@@ -12,7 +13,8 @@
 						 :onclick => "ClearText('#fc4a1a')"	%>
 		<% end %>
 	<% elsif @wordSearched %>
-					<%= text_field_tag :searched_word, "Search/type in a word from Proverbs #{@numChap} to learn more!", 
+					<%= text_field_tag :searched_word, nil,
+							 :placeholder => "Search/type in a word from Proverbs #{@numChap} to learn more!", 
 							 :class => 'ysw-search-box search-box' %>
 	<% end %>
 
